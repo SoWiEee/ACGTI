@@ -1,0 +1,178 @@
+[
+  {
+    "id": "q1",
+    "prompt": "第一次进入新番世界，你通常会先做什么？",
+    "scene": "陌生教室 / 旅馆大厅 / 战队据点的第一秒",
+    "options": [
+      { "id": "a", "label": "先主动打招呼，快速混熟", "tone": "表达欲很强，先把场子热起来。", "weights": { "expression": 2, "agency": 1, "aura": 1 } },
+      { "id": "b", "label": "先观察地形和人物关系", "tone": "先收集信息，再决定怎么站位。", "weights": { "judgement": 2, "order": 1, "aura": -1 } },
+      { "id": "c", "label": "先找一个能安静待着的位置", "tone": "不抢镜，但会默默记住所有细节。", "weights": { "temperature": -1, "order": 1, "aura": -2 } },
+      { "id": "d", "label": "直接四处探索，看哪里最有戏", "tone": "剧情感优先，行动比思考更快。", "weights": { "agency": 2, "temperature": 1, "order": -1 } }
+    ]
+  },
+  {
+    "id": "q2",
+    "prompt": "队友吵起来时，你更像哪一种人？",
+    "scene": "作战会议 / 社团争执 / 组队分歧",
+    "options": [
+      { "id": "a", "label": "先把气氛稳住，再慢慢讲理", "tone": "你擅长做情绪缓冲层。", "weights": { "temperature": 2, "order": 1, "aura": 1 } },
+      { "id": "b", "label": "直接指出问题，逼大家回到重点", "tone": "你偏向把叙事拉回主线。", "weights": { "judgement": 2, "agency": 1, "expression": 1 } },
+      { "id": "c", "label": "站在旁边记录双方观点", "tone": "先判断阵营与风险，再出手。", "weights": { "judgement": 1, "order": 2, "expression": -1 } },
+      { "id": "d", "label": "干脆自己把麻烦解决掉", "tone": "你不爱拉扯，倾向直接推进剧情。", "weights": { "agency": 2, "aura": 1, "temperature": -1 } }
+    ]
+  },
+  {
+    "id": "q3",
+    "prompt": "被朋友夸“你很可靠”时，你会怎么想？",
+    "scene": "日常夸奖 / 战后复盘 / 深夜聊天",
+    "options": [
+      { "id": "a", "label": "那当然，我本来就会收尾", "tone": "明显的责任位气质。", "weights": { "order": 2, "agency": 1, "aura": 1 } },
+      { "id": "b", "label": "其实我只是比较会装镇定", "tone": "稳定感来自克制，不是天生强硬。", "weights": { "judgement": 1, "temperature": 1, "aura": -1 } },
+      { "id": "c", "label": "嗯？我有这么像支柱吗", "tone": "你会因为被需要而微微发热。", "weights": { "temperature": 2, "expression": 1 } },
+      { "id": "d", "label": "最好别把太多事都交给我", "tone": "你有边界感，也保留退场空间。", "weights": { "order": -1, "aura": -1, "judgement": 2 } }
+    ]
+  },
+  {
+    "id": "q4",
+    "prompt": "如果必须在两种剧情走向里选，你会更偏向？",
+    "scene": "主线分歧 / 章节结尾 / 角色命运选择",
+    "options": [
+      { "id": "a", "label": "大家一起赢的热血线", "tone": "你喜欢明确、向上的展开。", "weights": { "temperature": 2, "expression": 2, "agency": 1 } },
+      { "id": "b", "label": "冷静但代价很大的真相线", "tone": "你能接受压抑，但要有逻辑。", "weights": { "judgement": 2, "aura": 2, "order": 1 } },
+      { "id": "c", "label": "稍微混乱一点但更自由的线", "tone": "你不太吃死板的命运安排。", "weights": { "agency": 2, "order": -2, "expression": 1 } },
+      { "id": "d", "label": "先让角色关系更有余韵", "tone": "你在意的是情绪回响和留白。", "weights": { "temperature": 1, "aura": 1, "judgement": 1 } }
+    ]
+  },
+  {
+    "id": "q5",
+    "prompt": "你在队伍里的存在感更接近？",
+    "scene": "小队编成 / 班级座位 / 冒险分工",
+    "options": [
+      { "id": "a", "label": "高存在感的主导位", "tone": "你会自然把别人注意力拉过来。", "weights": { "expression": 2, "aura": 2, "agency": 1 } },
+      { "id": "b", "label": "在关键时刻才会发光", "tone": "平时不吵，出手时很准。", "weights": { "judgement": 2, "aura": 1, "expression": -1 } },
+      { "id": "c", "label": "安静但不能没有", "tone": "你像稳定叙事结构里的底座。", "weights": { "order": 2, "temperature": 1, "expression": -1 } },
+      { "id": "d", "label": "总在让场面变得更有趣", "tone": "你是推动剧情转折的触发点。", "weights": { "agency": 2, "expression": 1, "order": -1 } }
+    ]
+  },
+  {
+    "id": "q6",
+    "prompt": "面对危险气场很强的人，你通常？",
+    "scene": "宿敌登场 / 神秘转学生 / 黑衣前辈",
+    "options": [
+      { "id": "a", "label": "先笑着接近，看看能不能化解", "tone": "你会用温度去拆解锋利感。", "weights": { "temperature": 2, "expression": 1, "aura": -1 } },
+      { "id": "b", "label": "立刻提高警戒并分析威胁", "tone": "你对危险的直觉很灵。", "weights": { "judgement": 2, "order": 1, "aura": 1 } },
+      { "id": "c", "label": "其实会有点被吸引", "tone": "你对压迫感和魅力共存的角色没抵抗力。", "weights": { "aura": 2, "temperature": 1, "expression": 1 } },
+      { "id": "d", "label": "直接和对方正面碰撞", "tone": "你不太会躲，反而会迎上去。", "weights": { "agency": 2, "expression": 1, "order": -1 } }
+    ]
+  },
+  {
+    "id": "q7",
+    "prompt": "你更适合哪种“高光时刻”？",
+    "scene": "剧情燃点 / 角色回忆杀 / 终局反转",
+    "options": [
+      { "id": "a", "label": "情绪爆发，把所有人带动起来", "tone": "你是能把场子点燃的人。", "weights": { "expression": 2, "temperature": 2 } },
+      { "id": "b", "label": "沉默出手，一击定局", "tone": "你更像冷静处理问题的王牌。", "weights": { "judgement": 2, "aura": 2 } },
+      { "id": "c", "label": "在所有人都放弃时继续撑住", "tone": "你会被写成支柱角色。", "weights": { "order": 2, "temperature": 1, "agency": 1 } },
+      { "id": "d", "label": "突然改写规则，让局势翻面", "tone": "你偏向打破预设，让叙事转轨。", "weights": { "agency": 2, "aura": 1, "order": -1 } }
+    ]
+  },
+  {
+    "id": "q8",
+    "prompt": "当别人情绪很低落时，你最常做的是？",
+    "scene": "深夜消息 / 失意约会 / 角色崩溃边缘",
+    "options": [
+      { "id": "a", "label": "认真陪聊，直到对方愿意说话", "tone": "你会直接承担安抚功能。", "weights": { "temperature": 2, "expression": 1 } },
+      { "id": "b", "label": "给出可执行的解决方案", "tone": "你习惯把情绪问题拆成任务。", "weights": { "judgement": 2, "order": 1 } },
+      { "id": "c", "label": "安静待着，让对方自己缓过来", "tone": "你尊重对方的恢复节奏。", "weights": { "aura": -1, "order": 1, "temperature": 1 } },
+      { "id": "d", "label": "直接把人拖去做点别的", "tone": "你会用行动切断坏情绪循环。", "weights": { "agency": 2, "expression": 1, "temperature": 1 } }
+    ]
+  },
+  {
+    "id": "q9",
+    "prompt": "你最讨厌哪种剧情推进？",
+    "scene": "连续误会 / 强行降智 / 机械发刀",
+    "options": [
+      { "id": "a", "label": "所有人都不说人话", "tone": "你很在意叙事效率。", "weights": { "judgement": 2, "order": 1 } },
+      { "id": "b", "label": "把角色写得没有边界感", "tone": "你不喜欢关系被乱揉。", "weights": { "order": 2, "aura": 1 } },
+      { "id": "c", "label": "没铺垫就突然煽情", "tone": "你要的是节奏，而不是硬煽。", "weights": { "judgement": 1, "temperature": 1 } },
+      { "id": "d", "label": "明明可以直接冲结果却拖着", "tone": "你会替角色急。", "weights": { "agency": 2, "expression": 1 } }
+    ]
+  },
+  {
+    "id": "q10",
+    "prompt": "你在关系里更像哪种角色？",
+    "scene": "主角团 / 搭档关系 / 重要他人",
+    "options": [
+      { "id": "a", "label": "会照顾人、也会记得细节的人", "tone": "你是耐心型存在。", "weights": { "temperature": 2, "order": 1 } },
+      { "id": "b", "label": "会把大家往前推的人", "tone": "你天然带有引导性。", "weights": { "agency": 2, "expression": 1 } },
+      { "id": "c", "label": "不轻易靠近，但靠近后很稳", "tone": "你是慢热但可信的类型。", "weights": { "judgement": 1, "aura": 2, "temperature": -1 } },
+      { "id": "d", "label": "关系一旦熟了就很吵闹", "tone": "你不一定安静，但很有生命力。", "weights": { "expression": 2, "temperature": 1 } }
+    ]
+  },
+  {
+    "id": "q11",
+    "prompt": "如果要给你安排一个称号，你更能接受？",
+    "scene": "封号 / 角色卡 / 阵营称谓",
+    "options": [
+      { "id": "a", "label": "策略担当", "tone": "你会被看作会想办法的人。", "weights": { "judgement": 2, "order": 1 } },
+      { "id": "b", "label": "场面点火器", "tone": "你是把气氛和行动都点起来的角色。", "weights": { "expression": 2, "agency": 1 } },
+      { "id": "c", "label": "沉默守门人", "tone": "你更偏向稳住结构。", "weights": { "order": 2, "aura": 1 } },
+      { "id": "d", "label": "危险但很有趣", "tone": "你身上有一点失控魅力。", "weights": { "aura": 2, "agency": 1, "temperature": 1 } }
+    ]
+  },
+  {
+    "id": "q12",
+    "prompt": "当你心情很好的时候，最可能？",
+    "scene": "放学路上 / 战胜归来 / 休息日",
+    "options": [
+      { "id": "a", "label": "开始疯狂分享一切", "tone": "快乐会外溢成表达欲。", "weights": { "expression": 2, "temperature": 1 } },
+      { "id": "b", "label": "默默把事情做得更漂亮", "tone": "开心会转化成执行力。", "weights": { "order": 1, "agency": 2 } },
+      { "id": "c", "label": "想和熟的人待在一起", "tone": "你会往亲密关系里靠。", "weights": { "temperature": 2, "aura": -1 } },
+      { "id": "d", "label": "忍不住去挑战点新东西", "tone": "你会把状态推向更高强度。", "weights": { "agency": 2, "judgement": 1 } }
+    ]
+  },
+  {
+    "id": "q13",
+    "prompt": "你更像哪种“隐藏属性”？",
+    "scene": "角色资料卡 / 偏好公开 / 设定揭示",
+    "options": [
+      { "id": "a", "label": "表面安静，内里很会想", "tone": "外层收着，内核密度高。", "weights": { "judgement": 2, "aura": -1 } },
+      { "id": "b", "label": "看起来强，其实很软", "tone": "你有明显的反差萌。", "weights": { "temperature": 2, "expression": 1 } },
+      { "id": "c", "label": "看起来好说话，但边界很清楚", "tone": "你温和，却不容易被拿捏。", "weights": { "order": 2, "aura": 1 } },
+      { "id": "d", "label": "经常突然切换到行动模式", "tone": "你的节奏会忽然变快。", "weights": { "agency": 2, "expression": 1 } }
+    ]
+  },
+  {
+    "id": "q14",
+    "prompt": "如果你是队伍的第二核心，你更愿意？",
+    "scene": "副主角位 / 二号位 / 幕后关键角色",
+    "options": [
+      { "id": "a", "label": "负责把队伍拉回正确方向", "tone": "你适合做结构修正者。", "weights": { "judgement": 2, "order": 2 } },
+      { "id": "b", "label": "负责把所有人的状态拉满", "tone": "你擅长增幅团队情绪。", "weights": { "expression": 2, "temperature": 2 } },
+      { "id": "c", "label": "负责在关键节点做决定", "tone": "你会是临门一脚的人。", "weights": { "agency": 2, "aura": 1 } },
+      { "id": "d", "label": "负责在暗处托底", "tone": "你偏向稳定输出和保护。", "weights": { "order": 2, "temperature": 1 } }
+    ]
+  },
+  {
+    "id": "q15",
+    "prompt": "你面对未知结局时的态度是？",
+    "scene": "终章前夜 / 线路分歧 / 结局预兆",
+    "options": [
+      { "id": "a", "label": "先冲再说", "tone": "你信的是行动。", "weights": { "agency": 2, "expression": 1 } },
+      { "id": "b", "label": "先判断风险，再决定要不要赌", "tone": "你会认真控制失衡。", "weights": { "judgement": 2, "order": 1 } },
+      { "id": "c", "label": "只要和重要的人一起就能接受", "tone": "关系对你来说比结局更重要。", "weights": { "temperature": 2, "aura": -1 } },
+      { "id": "d", "label": "我想知道真正的规则是什么", "tone": "你会追问世界底层逻辑。", "weights": { "aura": 2, "judgement": 1 } }
+    ]
+  },
+  {
+    "id": "q16",
+    "prompt": "如果你的角色卡要写一句核心印象，你更想要？",
+    "scene": "最终结果页 / 角色档案 / 分享海报",
+    "options": [
+      { "id": "a", "label": "会发光，也会带人一起发光", "tone": "你的能量是可以传递的。", "weights": { "expression": 2, "temperature": 1, "agency": 1 } },
+      { "id": "b", "label": "看起来冷静，实际上很有温度", "tone": "你是外冷内热的稳定款。", "weights": { "temperature": 2, "judgement": 1 } },
+      { "id": "c", "label": "沉得住气，也扛得起局面", "tone": "你是典型的关键岗位角色。", "weights": { "order": 2, "agency": 1 } },
+      { "id": "d", "label": "不太好定义，但很难被忘记", "tone": "你更接近带余韵的存在。", "weights": { "aura": 2, "expression": 1 } }
+    ]
+  }
+]
