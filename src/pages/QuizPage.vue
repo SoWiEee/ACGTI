@@ -88,7 +88,7 @@
 
     <footer class="quiz-footer">
       <div class="quiz-footer-inner">
-        <div class="share-count">37 题 MBTI 测试</div>
+        <div class="share-count">{{ questions.length }} 题 MBTI 测试</div>
         <div class="footer-links">
           <RouterLink to="/">首页</RouterLink>
           <RouterLink to="/intro">人格类型</RouterLink>

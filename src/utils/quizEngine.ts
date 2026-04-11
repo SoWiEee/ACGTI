@@ -121,8 +121,11 @@ export function calculateQuizResult({
   const rawScores: Record<DimensionPair, number> = {
     'E_I': 0, 'S_N': 0, 'T_F': 0, 'J_P': 0
   }
-  const maxScores: Record<DimensionPair, number> = {
-    'E_I': 0, 'S_N': 0, 'T_F': 0, 'J_P': 0
+  const directionalMaxScores: Record<DimensionPair, { positive: number; negative: number }> = {
+    'E_I': { positive: 0, negative: 0 },
+    'S_N': { positive: 0, negative: 0 },
+    'T_F': { positive: 0, negative: 0 },
+    'J_P': { positive: 0, negative: 0 }
   }
 
   questions.forEach((question, index) => {
@@ -130,8 +133,13 @@ export function calculateQuizResult({
     if (typeof val !== 'number') return
 
     const { dimension, sign } = question
-    maxScores[dimension] += Math.abs(sign) * 3
     rawScores[dimension] += val * sign
+
+    if (sign > 0) {
+      directionalMaxScores[dimension].positive += 3
+    } else {
+      directionalMaxScores[dimension].negative += 3
+    }
   })
 
   const scores = {} as Record<DimensionPair, DimensionScore>
@@ -139,14 +147,13 @@ export function calculateQuizResult({
 
   for (const pair in DIMENSION_LETTERS) {
     const dimension = pair as DimensionPair
-    const score = rawScores[dimension]
-    const maxScore = Math.max(1, maxScores[dimension])
+    const score = normalizeDimensionScore(rawScores[dimension], directionalMaxScores[dimension])
 
     const [posLetter, negLetter] = DIMENSION_LETTERS[dimension]
     const dominant = score >= 0 ? posLetter : negLetter
 
     // percentage calculation (50 to 100)
-    const intensity = Math.abs(score) / maxScore
+    const intensity = Math.min(1, Math.abs(score))
     const percentage = Math.round(50 + (intensity * 50))
 
     scores[dimension] = {
@@ -196,6 +203,17 @@ export function calculateQuizResult({
     characterMatches: charMatches,
     featuredCharacter,
   }
+}
+
+function normalizeDimensionScore(
+  rawScore: number,
+  directionalMax: { positive: number; negative: number },
+) {
+  if (rawScore >= 0) {
+    return rawScore / Math.max(1, directionalMax.positive)
+  }
+
+  return rawScore / Math.max(1, directionalMax.negative)
 }
 
 export function normalizeMbtiCode(mbtiCode: string) {

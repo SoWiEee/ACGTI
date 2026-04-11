@@ -45,7 +45,7 @@ export interface Question {
   options?: QuestionOption[]
   weights?: Partial<Record<QuestionArchetypeWeightId, number>>
   dimension: DimensionPair
-  sign: 1 | 0 | -1
+  sign: 1 | -1
 }
 
 export interface Archetype {
