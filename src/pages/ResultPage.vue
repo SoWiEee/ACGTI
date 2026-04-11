@@ -149,11 +149,13 @@ function getDominantTraitLabel(traitId: TraitDimension, leftCode: string, leftLa
   <div v-if="result" class="result-page">
     <section class="result-hero" :style="{ background: resultThemeColor }">
       <div class="result-hero-inner">
-        <div class="hero-copy">
-          <p class="hero-caption">你的匹配角色是</p>
+        <div class="hero-copy type-box">
+          <p class="hero-caption">你的匹配角色谱系</p>
           <h1 class="hero-title">{{ primaryCharacter?.name || result.archetype.name }}</h1>
-          <p class="hero-code">{{ displayCode }}</p>
-          <p class="hero-quote">{{ result.archetype.oneLiner }}</p>
+          <div class="hero-badge-wrap">
+            <span class="hero-code">{{ displayCode }}</span>
+          </div>
+          <p class="hero-quote">“{{ result.archetype.oneLiner }}”</p>
 
           <div class="hero-actions">
             <button class="action-btn light" @click="copyText">
@@ -168,16 +170,18 @@ function getDominantTraitLabel(traitId: TraitDimension, leftCode: string, leftLa
           <p v-if="share.feedback.value" class="hero-feedback">{{ share.feedback.value }}</p>
         </div>
 
-        <div class="hero-visual">
-          <img
-            v-if="primaryCharacter?.id && !isCharacterImageBroken"
-            :src="primaryCharacterImage"
-            :alt="primaryCharacter?.name || 'Character'"
-            class="hero-image"
-            @error="hideBrokenImage"
-          />
-          <div v-else class="hero-image-fallback">
-            <AppIcon name="fallback" />
+        <div class="hero-visual poster-box">
+          <div class="poster-frame">
+            <img
+              v-if="primaryCharacter?.id && !isCharacterImageBroken"
+              :src="primaryCharacterImage"
+              :alt="primaryCharacter?.name || 'Character'"
+              class="hero-image"
+              @error="hideBrokenImage"
+            />
+            <div v-else class="hero-image-fallback">
+              <AppIcon name="fallback" />
+            </div>
           </div>
         </div>
       </div>
@@ -331,48 +335,72 @@ function getDominantTraitLabel(traitId: TraitDimension, leftCode: string, leftLa
 }
 
 .result-hero-inner {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 30px 24px 96px;
+  padding: 40px 24px 100px;
   display: grid;
-  gap: 24px;
+  gap: 40px;
   grid-template-columns: 1fr;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .result-hero-inner {
+    grid-template-columns: 1fr 1fr;
+    padding-top: 60px;
+    padding-bottom: 120px;
+    gap: 60px;
+  }
 }
 
 .hero-caption {
   margin: 0;
-  font-size: 26px;
-  font-weight: 600;
-  opacity: 0.92;
+  font-size: 22px;
+  font-weight: 700;
+  opacity: 0.9;
+  letter-spacing: 1px;
 }
 
 .hero-title {
   margin: 8px 0 0;
-  font-size: clamp(44px, 8vw, 82px);
-  line-height: 1;
-  font-weight: 800;
+  font-size: clamp(48px, 8vw, 76px);
+  line-height: 1.1;
+  font-weight: 900;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.hero-badge-wrap {
+  margin: 16px 0 0;
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px);
 }
 
 .hero-code {
-  margin: 6px 0 0;
-  font-size: clamp(28px, 4vw, 40px);
-  font-weight: 700;
-  opacity: 0.95;
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 800;
+  letter-spacing: 2px;
 }
 
 .hero-quote {
-  margin: 18px 0 0;
-  max-width: 640px;
-  font-size: 18px;
-  line-height: 1.65;
+  margin: 24px 0 0;
+  max-width: 600px;
+  font-size: 20px;
+  line-height: 1.6;
+  font-weight: 500;
+  font-style: italic;
   opacity: 0.95;
 }
 
 .hero-actions {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   flex-wrap: wrap;
-  margin-top: 26px;
+  margin-top: 36px;
 }
 
 .action-btn {
@@ -408,24 +436,50 @@ function getDominantTraitLabel(traitId: TraitDimension, leftCode: string, leftLa
 .hero-visual {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
+  perspective: 1000px;
+}
+
+.poster-frame {
+  position: relative;
+  background: #fff;
+  padding: 16px 16px 40px;
+  border-radius: 12px;
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.15),
+    0 1px 3px rgba(0,0,0,0.05);
+  transform: rotate(2deg) translateY(-10px);
+  max-width: 380px;
+  width: 100%;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.poster-frame:hover {
+  transform: rotate(0deg) translateY(-15px) scale(1.02);
+  box-shadow: 
+    0 30px 60px rgba(0,0,0,0.2),
+    0 2px 4px rgba(0,0,0,0.05);
 }
 
 .hero-image {
-  width: min(430px, 100%);
+  width: 100%;
+  height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 26px 38px rgba(0, 0, 0, 0.2));
+  border-radius: 8px;
+  background: #f4f6f8;
+  border: 1px solid #edf0f2;
 }
 
 .hero-image-fallback {
-  width: 220px;
-  height: 220px;
-  border-radius: 20px;
-  border: 2px dashed rgba(255, 255, 255, 0.5);
+  width: 100%;
+  aspect-ratio: 1;
+  background: #f4f6f8;
+  border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 80px;
+  color: #cdd4d9;
 }
 
 .hero-wave {
@@ -459,10 +513,19 @@ function getDominantTraitLabel(traitId: TraitDimension, leftCode: string, leftLa
   font-size: 19px;
   line-height: 1.75;
   color: #5f6b75;
+  background: linear-gradient(180deg, #ffffff, #fbfdfb);
+  border: 1px solid #e8ecef;
+  border-radius: 18px;
+  padding: 24px;
+  margin-bottom: 32px;
 }
 
 .intro-block p {
-  margin: 0 0 18px;
+  margin: 0 0 16px;
+}
+
+.intro-block p:last-child {
+  margin-bottom: 0;
 }
 
 .section-title-wrap {
@@ -493,9 +556,9 @@ function getDominantTraitLabel(traitId: TraitDimension, leftCode: string, leftLa
 }
 
 .traits-card {
-  background: #fff;
-  border: 1px solid #eceff1;
-  border-radius: 20px;
+  background: linear-gradient(180deg, #ffffff, #fbfdfb);
+  border: 1px solid #e8ecef;
+  border-radius: 18px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
   overflow: hidden;
   display: grid;
@@ -596,17 +659,17 @@ function getDominantTraitLabel(traitId: TraitDimension, leftCode: string, leftLa
 }
 
 .analysis-grid {
-  margin-top: 24px;
+  margin-top: 32px;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
+  gap: 20px;
 }
 
 .analysis-card {
-  background: #fff;
+  background: linear-gradient(180deg, #ffffff, #fbfdfb);
   border: 1px solid #e8ecef;
-  border-radius: 16px;
-  padding: 18px;
+  border-radius: 18px;
+  padding: 24px;
 }
 
 .analysis-card h3 {
@@ -632,11 +695,11 @@ function getDominantTraitLabel(traitId: TraitDimension, leftCode: string, leftLa
 }
 
 .tags-block {
-  margin-top: 16px;
-  background: #fff;
+  margin-top: 24px;
+  background: linear-gradient(180deg, #ffffff, #fbfdfb);
   border: 1px solid #e8ecef;
-  border-radius: 16px;
-  padding: 18px;
+  border-radius: 18px;
+  padding: 24px;
 }
 
 .tags-block h3 {
@@ -668,11 +731,11 @@ function getDominantTraitLabel(traitId: TraitDimension, leftCode: string, leftLa
 }
 
 .sidebar-card {
-  background: #fff;
+  background: linear-gradient(180deg, #ffffff, #fbfdfb);
   border: 1px solid #e7eaed;
-  border-radius: 16px;
-  padding: 16px;
-  margin-bottom: 12px;
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 16px;
 }
 
 .small-title {
