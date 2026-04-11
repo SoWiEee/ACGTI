@@ -90,5 +90,9 @@
 	"jia-ran": {
 		"image": "/images/characters/嘉然.png",
 		"accent": "#f5ba82"
+	},
+	"eis-taffy": {
+		"image": "/images/characters/永雏塔菲.png",
+		"accent": "#f3a3b6"
 	}
 }
