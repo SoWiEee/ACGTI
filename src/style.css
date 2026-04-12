@@ -195,21 +195,53 @@ select {
 }
 
 .language-select {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 0 8px;
-  color: var(--text-muted);
-  font-size: 0.88rem;
-  font-weight: 600;
+  margin: 0 4px;
+}
+
+.language-select::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid #8e9da8;
+  pointer-events: none;
+}
+
+.language-select:hover::after {
+  border-top-color: #3ba17c;
 }
 
 .language-select select {
-  border: 1px solid #dbe2e7;
-  border-radius: 8px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #f8f9fa;
+  border: 1px solid #e1e6ea;
+  border-radius: 20px;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 32px 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.language-select select:hover,
+.language-select select:focus {
   background: #fff;
-  color: var(--text);
-  padding: 6px 10px;
+  border-color: #3ba17c;
+  color: #3ba17c;
+  box-shadow: 0 0 0 3px rgba(59, 161, 124, 0.1);
 }
 
 .site-nav a {
