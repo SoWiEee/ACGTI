@@ -30,7 +30,7 @@
 
 - **MBTI 四维判定** — E/I、S/N、T/F、J/P 四维度作为底层框架
 - **8 种二次元原型** — 发光主角位 · 冰面观察者 · 誓约队长 · 灵巧回旋者 · 温柔修复者 · 影面策士 · 混沌火花 · 月下守护者
-- **22 位角色库** — 涵盖 VOCALOID、EVA、东方 Project、孤独摇滚、MyGO、Ave Mujica、原神等作品
+- **24 位角色库** — 涵盖 VOCALOID、EVA、名侦探柯南、东方 Project、孤独摇滚、辉夜大小姐、某科学的超电磁炮、魔法少女小圆、MyGO、Ave Mujica、原神等作品
 - **维度可视化** — 16personalities 风格的交互式倾向滑块
 - **分享海报** — 一键导出结果为 PNG
 - **纯前端运行** — 无后端、无注册、无数据收集，结果存于本地
@@ -68,27 +68,35 @@
 ```
 src/
 ├── components/           # 可复用 UI 组件
+│   ├── AppIcon.vue
 │   ├── ProgressBar.vue
 │   ├── QuestionCard.vue
 │   ├── ResultSummary.vue
-│   └── SharePoster.vue
+│   ├── SharePoster.vue
+│   └── AdsenseSlot.vue
 ├── composables/          # Vue 组合式函数
 │   ├── useQuiz.ts       # 测试状态与逻辑
 │   └── useShare.ts      # 分享与导出功能
 ├── data/                # 静态数据
-│   ├── questions.json   # 48 道情境式题目
+│   ├── questions.json   # 39 道情境式题目
 │   ├── archetypes.json  # 8 个角色原型定义
-│   └── characters.json  # 角色资料库
+│   ├── characters.json  # 角色资料库
+│   ├── characterVisuals.json       # 角色视觉配置
+│   └── characterProbabilities.json # 角色命中概率
 ├── pages/               # 页面组件
 │   ├── HomePage.vue     # 首页
 │   ├── IntroPage.vue    # 测试说明页
 │   ├── QuizPage.vue     # 答题页
 │   ├── ResultPage.vue   # 结果展示页
+│   ├── CharactersPage.vue # 角色图鉴页
 │   └── AboutPage.vue    # 关于页
 ├── types/
 │   └── quiz.ts          # TypeScript 类型定义
 ├── utils/
 │   ├── quizEngine.ts    # 评分、原型匹配、角色命中逻辑
+│   ├── characterVisuals.ts    # 角色视觉数据注水
+│   ├── characterProbability.ts # 角色命中概率计算
+│   ├── adsense.ts       # Google AdSense 配置
 │   └── storage.ts       # localStorage 工具
 ├── router/
 │   └── index.ts         # 路由配置
@@ -100,10 +108,10 @@ src/
 ## 工作原理
 
 ```
-答题（48 道五级量表题）→ 算分（四维带符号权重）→ 原型匹配（映射到 8 种原型）→ 角色命中（输出唯一角色代码）→ 结果展示
+答题（39 道七级量表题）→ 算分（四维带符号权重 + 原型权重）→ 原型匹配（映射到 8 种原型）→ 角色命中（输出唯一角色代码）→ 结果展示
 ```
 
-1. **答题** — 48 道五级量表题（-3 到 +3），每题关联一个 MBTI 维度
+1. **答题** — 39 道七级量表题（-3 到 +3），每题关联一个 MBTI 维度与原型权重
 2. **算分** — 按维度累加带符号权重，计算每个维度的倾向百分比（50%–100%）
 3. **原型匹配** — 将四维结果映射到 8 种二次元原型之一
 4. **角色命中** — 根据维度结果在角色库中命中 1 位主角色，输出其自定义角色代码
@@ -151,9 +159,11 @@ VITE_ADSENSE_SLOT_RESULT=0987654321
 
 | 文件 | 说明 |
 |:-----|:-----|
-| `src/data/questions.json` | 48 道情境式题目 — 维度、权重、场景标签 |
+| `src/data/questions.json` | 39 道情境式题目 — 维度、原型权重、场景标签 |
 | `src/data/archetypes.json` | 8 个角色原型 — 名称、描述、亮点、短板 |
-| `src/data/characters.json` | 22 个角色条目 — 角色代码、MBTI 映射、标签、六维向量 |
+| `src/data/characters.json` | 24 个角色条目 — 角色代码、MBTI 映射、标签、六维向量 |
+| `src/data/characterVisuals.json` | 角色视觉配置 — 立绘、色彩、主题 |
+| `src/data/characterProbabilities.json` | 角色命中概率 — 基于人群统计的先验分布 |
 
 ## 致谢
 
