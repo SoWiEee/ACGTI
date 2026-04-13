@@ -372,7 +372,6 @@ function getDominantTraitLabel(traitId: TraitDimension, leftCode: string, leftLa
           <div class="relay-card-icon">
             <AppIcon name="copy" />
           </div>
-          <p class="small-title">{{ t('result.relayTitle') }}</p>
           <p class="relay-copy">{{ t('result.relayCopy') }}</p>
           <div class="relay-divider"></div>
           <p class="relay-hint">{{ t('result.relayHint') }}</p>

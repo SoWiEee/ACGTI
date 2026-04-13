@@ -129,12 +129,6 @@
     "vector": { "expression": 3, "temperature": 2, "judgement": 0, "order": -2, "agency": 2, "aura": 2 },
     "signature": {
       "uniqueAxes": { "expression": 3, "order": -2, "temperature": 2 }
-    },
-    "personaBasis": {
-      "type": "fandom-impression",
-      "label": "圈层印象映射",
-      "confidence": "low",
-      "summary": "主要依据社区常见形象、二创传播与企划衍生印象，非官方唯一人格结论。"
     }
   },
   {
