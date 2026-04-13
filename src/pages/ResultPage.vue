@@ -7,7 +7,7 @@ import AppIcon from '../components/AppIcon.vue'
 import { useShare } from '../composables/useShare'
 import { useQuiz } from '../composables/useQuiz'
 import { useI18n } from '../i18n'
-import { getLocalizedCharacterName } from '../i18n/characters'
+import { getHiddenCharacterNote, getHiddenCharacterTags, getLocalizedCharacterName, isHiddenCharacter } from '../i18n/characters'
 import { normalizeMbtiCode } from '../utils/quizEngine'
 
 const route = useRoute()
@@ -90,6 +90,17 @@ const primaryCharacterImage = computed(() => {
 })
 
 const primaryCharacter = computed(() => result.value?.characterMatches?.[0] ?? null)
+const displayTags = computed(() => {
+  if (!primaryCharacter.value) {
+    return []
+  }
+
+  return isHiddenCharacter(primaryCharacter.value)
+    ? getHiddenCharacterTags(locale.value)
+    : primaryCharacter.value.tags.map((tag, idx) =>
+        t('characters.' + primaryCharacter.value!.id + '.tags.' + idx, undefined, tag),
+      )
+})
 const displayCode = computed(() => result.value?.code ?? result.value?.mbtiCode ?? '')
 const resultThemeColor = computed(() => primaryCharacter.value?.accent ?? result.value?.archetype.accent ?? '#e2ad3b')
 const strongestTrait = computed(() => {
@@ -212,7 +223,7 @@ function getDominantTraitLabel(traitId: TraitDimension, leftCode: string, leftLa
       <main class="result-main">
         <section class="intro-block" v-reveal>
           <p>{{ t('archetypes.' + result.archetype.id + '.description', undefined, result.archetype.description) }}</p>
-          <p>{{ primaryCharacter ? t('characters.' + primaryCharacter.id + '.note', undefined, primaryCharacter.note) : '' }}</p>
+          <p>{{ primaryCharacter ? (isHiddenCharacter(primaryCharacter) ? getHiddenCharacterNote(locale) : t('characters.' + primaryCharacter.id + '.note', undefined, primaryCharacter.note)) : '' }}</p>
         </section>
 
         <section class="traits-section" id="traits-section" v-reveal>
@@ -290,7 +301,7 @@ function getDominantTraitLabel(traitId: TraitDimension, leftCode: string, leftLa
             {{ t('result.tags') }}
           </h3>
           <div class="tags-wrap">
-            <span v-for="(tag, idx) in primaryCharacter.tags" :key="tag"># {{ t('characters.' + primaryCharacter.id + '.tags.' + idx, undefined, tag) }}</span>
+            <span v-for="tag in displayTags" :key="tag"># {{ tag }}</span>
           </div>
         </section>
 

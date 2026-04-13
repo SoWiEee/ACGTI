@@ -127,6 +127,10 @@
 		"image": "/images/characters/朝武芳乃.png",
 		"accent": "#d0104c"
 	},
+	"phrolova": {
+		"image": "/images/characters/弗洛洛.png",
+		"accent": "#b3202d"
+	},
 	"atri": {
 		"image": "/images/characters/亚托莉.png",
 		"accent": "#e63f32"

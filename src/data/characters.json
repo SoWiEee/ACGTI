@@ -636,6 +636,40 @@
     }
   },
   {
+    "id": "phrolova",
+    "name": "弗洛洛",
+    "hidden": true,
+    "series": "鸣潮",
+    "image": "/images/characters/弗洛洛.png",
+    "matchCode": "INFJ",
+    "matchCodeFlex": ["INTJ"],
+    "code": "PHRV",
+    "title": "忧伤指挥家·把理想国写进丧钟的人",
+    "archetypeId": "shadow-strategist",
+    "tags": ["安静型压迫感", "危险的演奏者", "理想世界执念", "美学级反派气场"],
+    "note": "你给人的感觉不是普通高冷，而是那种会安静站在场中央、却让所有人自动收声的危险存在。表面上情绪很淡，实际内核全是被悲伤和执念拧出来的控制力，像是在重新给世界定调的人。",
+    "vector": {
+      "expression": -2,
+      "temperature": -2,
+      "judgement": 3,
+      "order": 1,
+      "agency": 2,
+      "aura": 3
+    },
+    "signature": {
+      "uniqueAxes": {
+        "judgement": 3,
+        "temperature": -2,
+        "aura": 3
+      },
+      "questionAffinity": [
+        { "questionId": "q20", "expected": "disagree", "weight": 1.2 },
+        { "questionId": "q34", "expected": "agree", "weight": 1.15 },
+        { "questionId": "q39", "expected": "disagree", "weight": 1.2 }
+      ]
+    }
+  },
+  {
     "id": "yanami-anna",
     "name": "八奈见杏菜",
     "series": "败犬女主太多了！",

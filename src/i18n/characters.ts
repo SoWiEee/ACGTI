@@ -3,6 +3,41 @@ import type { AppLocale } from './types'
 
 type LocalizedText = Record<AppLocale, string>
 
+const hiddenCharacterNameI18n: LocalizedText = {
+  'zh-CN': '隐藏角色',
+  'zh-TW': '隱藏角色',
+  en: 'Hidden Character',
+  ja: '隠しキャラ',
+}
+
+const hiddenCharacterSeriesI18n: LocalizedText = {
+  'zh-CN': '有隐藏角色',
+  'zh-TW': '有隱藏角色',
+  en: 'Hidden Result Exists',
+  ja: '隠し結果あり',
+}
+
+const hiddenCharacterTitleI18n: LocalizedText = {
+  'zh-CN': '已触发隐藏结果',
+  'zh-TW': '已觸發隱藏結果',
+  en: 'Hidden Result Triggered',
+  ja: '隠し結果を解放',
+}
+
+const hiddenCharacterNoteI18n: LocalizedText = {
+  'zh-CN': '你命中了一个隐藏角色结果。ACGTI 不会直接公开其角色名，结果页仅保留角色代码、形象和气质解读。',
+  'zh-TW': '你命中了一個隱藏角色結果。ACGTI 不會直接公開其角色名，結果頁僅保留角色代碼、形象與氣質解讀。',
+  en: 'You hit a hidden result. ACGTI keeps the actual character name masked and only shows the code, image, and personality reading.',
+  ja: '隠し結果に命中しました。ACGTIでは実際のキャラ名は伏せたまま、コードとビジュアル、解説のみを表示します。',
+}
+
+const hiddenCharacterTagsI18n: Record<AppLocale, string[]> = {
+  'zh-CN': ['隐藏结果', '低概率命中', '特殊气质'],
+  'zh-TW': ['隱藏結果', '低機率命中', '特殊氣質'],
+  en: ['Hidden Result', 'Low Probability Hit', 'Special Aura'],
+  ja: ['隠し結果', '低確率ヒット', '特殊な気配'],
+}
+
 const characterNameI18n: Record<string, LocalizedText> = {
   'hatsune-miku': {
     'zh-CN': '初音未来',
@@ -342,10 +377,32 @@ function resolveLocalizedText(
   return table[key]?.[locale] ?? fallback
 }
 
+export function isHiddenCharacter(character: Pick<CharacterMatch, 'hidden'> | null | undefined) {
+  return Boolean(character?.hidden)
+}
+
+export function getHiddenCharacterTitle(locale: AppLocale) {
+  return hiddenCharacterTitleI18n[locale]
+}
+
+export function getHiddenCharacterNote(locale: AppLocale) {
+  return hiddenCharacterNoteI18n[locale]
+}
+
+export function getHiddenCharacterTags(locale: AppLocale) {
+  return hiddenCharacterTagsI18n[locale]
+}
+
 export function getLocalizedCharacterName(character: Pick<CharacterMatch, 'id' | 'name'>, locale: AppLocale) {
+  if (isHiddenCharacter(character as CharacterMatch)) {
+    return hiddenCharacterNameI18n[locale]
+  }
   return resolveLocalizedText(characterNameI18n, character.id, locale, character.name)
 }
 
-export function getLocalizedCharacterSeries(character: Pick<CharacterMatch, 'series'>, locale: AppLocale) {
+export function getLocalizedCharacterSeries(character: Pick<CharacterMatch, 'series' | 'hidden'>, locale: AppLocale) {
+  if (isHiddenCharacter(character as CharacterMatch)) {
+    return hiddenCharacterSeriesI18n[locale]
+  }
   return resolveLocalizedText(seriesI18n, character.series, locale, character.series)
 }

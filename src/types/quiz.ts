@@ -66,6 +66,7 @@ export interface Archetype {
 export interface CharacterMatch {
   id: string
   name: string
+  hidden?: boolean
   series: string
   image?: string
   accent?: string

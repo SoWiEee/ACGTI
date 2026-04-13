@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 import { useI18n } from '../i18n'
-import { getLocalizedCharacterName, getLocalizedCharacterSeries } from '../i18n/characters'
+import { getHiddenCharacterTags, getHiddenCharacterTitle, getLocalizedCharacterName, getLocalizedCharacterSeries, isHiddenCharacter } from '../i18n/characters'
 import type { QuizResult } from '../types/quiz'
 
 defineProps<{
@@ -23,7 +23,7 @@ defineExpose({
       <div>
         <p class="share-poster__kicker">ACGTI 角色结果 · {{ result.code }} · {{ result.archetype.name }}</p>
         <h2 class="share-poster__title">{{ result.characterMatches[0] ? getLocalizedCharacterName(result.characterMatches[0], locale) : result.archetype.name }}</h2>
-        <p class="share-poster__subtitle">{{ result.characterMatches[0]?.title || result.archetype.subtitle }}</p>
+        <p class="share-poster__subtitle">{{ result.characterMatches[0] && isHiddenCharacter(result.characterMatches[0]) ? getHiddenCharacterTitle(locale) : (result.characterMatches[0]?.title || result.archetype.subtitle) }}</p>
       </div>
       <div class="share-poster__score">
         <span>命中感</span>
@@ -38,7 +38,12 @@ defineExpose({
     </div>
 
     <div class="share-poster__tags">
-      <span v-for="tag in (result.characterMatches[0]?.tags || (result.tags.length ? result.tags : result.archetype.tags)).slice(0, 4)" :key="tag">{{ tag }}</span>
+      <span
+        v-for="tag in (result.characterMatches[0] && isHiddenCharacter(result.characterMatches[0])
+          ? getHiddenCharacterTags(locale)
+          : (result.characterMatches[0]?.tags || (result.tags.length ? result.tags : result.archetype.tags)).slice(0, 4))"
+        :key="tag"
+      >{{ tag }}</span>
     </div>
 
     <div class="share-poster__body">

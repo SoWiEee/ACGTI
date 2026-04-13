@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useQuiz } from '../composables/useQuiz'
 import { useI18n } from '../i18n'
-import { getLocalizedCharacterName, getLocalizedCharacterSeries } from '../i18n/characters'
+import { getHiddenCharacterTitle, getLocalizedCharacterName, getLocalizedCharacterSeries, isHiddenCharacter } from '../i18n/characters'
 
 const { characters } = useQuiz()
 const { locale, t } = useI18n()
@@ -25,7 +25,14 @@ const { locale, t } = useI18n()
         v-reveal
       >
         <div class="card-image-wrap">
-          <img :src="character.image" :alt="getLocalizedCharacterName(character, locale)" class="card-image" loading="lazy" />
+          <img
+            v-if="!isHiddenCharacter(character)"
+            :src="character.image"
+            :alt="getLocalizedCharacterName(character, locale)"
+            class="card-image"
+            loading="lazy"
+          />
+          <div v-else class="card-image-placeholder">{{ getLocalizedCharacterSeries(character, locale) }}</div>
         </div>
         <div class="card-content">
           <div class="card-tags">
@@ -34,7 +41,9 @@ const { locale, t } = useI18n()
           </div>
           <h2 class="card-name">{{ getLocalizedCharacterName(character, locale) }}</h2>
           <p class="card-source">{{ getLocalizedCharacterSeries(character, locale) }}</p>
-          <p class="card-title">{{ t('characters.' + character.id + '.title', undefined, character.title) }}</p>
+          <p class="card-title">
+            {{ isHiddenCharacter(character) ? getHiddenCharacterTitle(locale) : t('characters.' + character.id + '.title', undefined, character.title) }}
+          </p>
         </div>
       </RouterLink>
     </section>
@@ -89,6 +98,24 @@ const { locale, t } = useI18n()
   object-position: bottom;
   transform-origin: bottom center;
   transition: transform 0.3s ease;
+}
+
+.card-image-placeholder {
+  width: calc(100% - 28px);
+  height: calc(100% - 28px);
+  margin: 14px;
+  border-radius: 8px;
+  border: 1px dashed color-mix(in srgb, var(--accent-color, #42b883) 48%, white);
+  background: color-mix(in srgb, var(--accent-color, #42b883) 10%, white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  color: #50606d;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 .character-card:hover .card-image {
