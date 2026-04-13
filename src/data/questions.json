@@ -4,7 +4,7 @@
     "text": "看到针对我喜欢的小圈子的引战或刻板印象言论，我会感到愤怒并想要反击或举报。",
     "scene": "圈外冲突",
     "dimension": "T_F",
-    "sign": 1,
+    "sign": -1,
     "weights": {
       "strategist": 2,
       "ruler": 1,
@@ -140,7 +140,7 @@
     "text": "我经常在深夜因为情绪泛滥而发些emo的动态或评论。",
     "scene": "情绪波动",
     "dimension": "T_F",
-    "sign": 1,
+    "sign": -1,
     "weights": {
       "strategist": 2,
       "ruler": 1,
@@ -310,7 +310,7 @@
     "text": "看到一部长篇或深爱的番剧终于‘完结撒花’时，我会感到强烈的失落和空虚感。",
     "scene": "追番情感",
     "dimension": "T_F",
-    "sign": 1,
+    "sign": -1,
     "weights": {
       "strategist": 2,
       "ruler": 1,
@@ -361,7 +361,7 @@
     "text": "我对喜欢的Vtuber或角色投入了很深的感情，如果他们‘毕业’或退圈，我会难过很久。",
     "scene": "粉丝行为",
     "dimension": "T_F",
-    "sign": 1,
+    "sign": -1,
     "weights": {
       "strategist": 0,
       "ruler": 0,
@@ -480,7 +480,7 @@
     "text": "我很喜欢看那些有些缺德、冒犯性的‘地狱笑话’，并且经常能毫无心理负担地get到笑点。",
     "scene": "网络幽默",
     "dimension": "T_F",
-    "sign": -1,
+    "sign": 1,
     "weights": {
       "strategist": 2,
       "ruler": 1,
