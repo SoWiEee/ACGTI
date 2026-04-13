@@ -5,15 +5,41 @@
     "series": "VOCALOID",
     "image": "/images/characters/hatsune-miku.png",
     "matchCode": "ENFP",
-    "matchCodeFlex": ["ENFJ", "ESFJ"],
+    "matchCodeFlex": [
+      "ENFJ",
+      "ESFJ"
+    ],
     "code": "HTMK",
     "title": "世界第一的公主殿下（劳务派遣版）",
     "archetypeId": "luminous-lead",
-    "tags": ["电子韭菜收割机", "葱田永动机", "演唱会空气吉他冠军", "二次元公务员"],
+    "tags": [
+      "电子韭菜收割机",
+      "葱田永动机",
+      "演唱会空气吉他冠军",
+      "二次元公务员"
+    ],
     "note": "你以为她是歌姬，其实她是二次元公务员——演唱会排期比社畜加班还密，葱色双马尾一晃，弹幕自动刷「世最可」，哪怕你根本没听清歌词。属于那种「我不认识她，但我刷过她的表情包」的典中典。",
-    "vector": { "expression": 3, "temperature": 2, "judgement": 0, "order": 0, "agency": 3, "aura": 2 },
+    "vector": {
+      "expression": 3,
+      "temperature": 2,
+      "judgement": 0,
+      "order": 0,
+      "agency": 3,
+      "aura": 2
+    },
     "signature": {
-      "uniqueAxes": { "expression": 3, "temperature": 2, "agency": 3, "aura": 2 }
+      "uniqueAxes": {
+        "expression": 3,
+        "temperature": 2,
+        "agency": 3,
+        "aura": 2
+      }
+    },
+    "personaBasis": {
+      "type": "fandom-impression",
+      "label": "圈层印象映射",
+      "confidence": "low",
+      "summary": "主要依据社区常见形象、二创传播与企划衍生印象，非官方唯一人格结论。"
     }
   },
   {
@@ -25,11 +51,27 @@
     "code": "AYRE",
     "title": "三无圣体·冷白皮天花板",
     "archetypeId": "icebound-observer",
-    "tags": ["微笑税", "绷带美学创始人", "AT力场级社交距离", "台词比贴吧水帖少"],
+    "tags": [
+      "微笑税",
+      "绷带美学创始人",
+      "AT力场级社交距离",
+      "台词比贴吧水帖少"
+    ],
     "note": "全剧台词加起来不如你一天刷的贴吧多，但人气能杀进历史前三。她站在那里就是「高冷」的词典释义——你甚至不敢问路，怕她回你一句「どうでもいい」（关我屁事）。",
-    "vector": { "expression": -3, "temperature": -2, "judgement": 2, "order": 1, "agency": 1, "aura": 3 },
+    "vector": {
+      "expression": -3,
+      "temperature": -2,
+      "judgement": 2,
+      "order": 1,
+      "agency": 1,
+      "aura": 3
+    },
     "signature": {
-      "uniqueAxes": { "expression": -3, "temperature": -2, "aura": 3 }
+      "uniqueAxes": {
+        "expression": -3,
+        "temperature": -2,
+        "aura": 3
+      }
     }
   },
   {
@@ -41,11 +83,27 @@
     "code": "ASKA",
     "title": "傲娇界の红色彗星",
     "archetypeId": "chaos-spark",
-    "tags": ["嘴硬率300%", "破防名场面年度MVP", "你算哪块小饼干", "吵架自带BGM"],
+    "tags": [
+      "嘴硬率300%",
+      "破防名场面年度MVP",
+      "你算哪块小饼干",
+      "吵架自带BGM"
+    ],
     "note": "嘴上「你算什么」翻译过来是「快来懂我」。她骂人时你血压飙升，她破防时你截图发群——属于那种「出场自带吵架BGM」的典中典。建议搭配弹幕「明日香又又又破防了」食用。",
-    "vector": { "expression": 3, "temperature": 1, "judgement": -1, "order": -1, "agency": 3, "aura": 3 },
+    "vector": {
+      "expression": 3,
+      "temperature": 1,
+      "judgement": -1,
+      "order": -1,
+      "agency": 3,
+      "aura": 3
+    },
     "signature": {
-      "uniqueAxes": { "expression": 3, "agency": 3, "aura": 3 }
+      "uniqueAxes": {
+        "expression": 3,
+        "agency": 3,
+        "aura": 3
+      }
     }
   },
   {
@@ -57,9 +115,21 @@
     "code": "KNAN",
     "title": "死神小学生·人形因果律武器",
     "archetypeId": "icebound-observer",
-    "tags": ["走哪哪出殡", "反光眼镜の过载", "麻醉针公务员", "日本犯罪率地图热力图"],
+    "tags": [
+      "走哪哪出殡",
+      "反光眼镜の过载",
+      "麻醉针公务员",
+      "日本犯罪率地图热力图"
+    ],
     "note": "别问犯人是谁，先查他机票行程单。他还没上小学，已经看透人性+让全日本犯罪率地图变热力图。名言：「真相只有一个，但案发现场永远有两个」。建议联动「走近科学」栏目组。",
-    "vector": { "expression": -1, "temperature": -2, "judgement": 3, "order": 2, "agency": 2, "aura": 2 }
+    "vector": {
+      "expression": -1,
+      "temperature": -2,
+      "judgement": 3,
+      "order": 2,
+      "agency": 2,
+      "aura": 2
+    }
   },
   {
     "id": "hakurei-reimu",
@@ -67,23 +137,69 @@
     "series": "东方Project",
     "image": "/images/characters/hakurei-reimu.png",
     "matchCode": "ISTP",
-    "matchCodeFlex": ["ESTP"],
+    "matchCodeFlex": [
+      "ESTP"
+    ],
     "code": "HKRM",
     "title": "贫穷但能打·摸鱼巫女",
     "archetypeId": "icebound-observer",
-    "tags": ["香火钱=0", "战力∞", "异变就是拿来揍的", "东方圈唯一指定门面"],
+    "tags": [
+      "香火钱=0",
+      "战力∞",
+      "异变就是拿来揍的",
+      "东方圈唯一指定门面"
+    ],
     "note": "神社穷得养蚊子，但她人气养活了整个东方圈。你以为她在摆烂，其实她只是把「赢」字写在了懒狗皮下面。名言：「没钱？那就把惹事的揍一顿」。属于「穷得理直气壮」的典范。",
-    "vector": { "expression": 1, "temperature": 1, "judgement": 1, "order": 0, "agency": 3, "aura": 2 },
+    "vector": {
+      "expression": 1,
+      "temperature": 1,
+      "judgement": 1,
+      "order": 0,
+      "agency": 3,
+      "aura": 2
+    },
     "signature": {
-      "uniqueAxes": { "agency": 3, "order": 0, "temperature": 1 },
+      "uniqueAxes": {
+        "agency": 3,
+        "order": 0,
+        "temperature": 1
+      },
       "questionAffinity": [
-        { "questionId": "q2", "expected": "agree", "weight": 1.8 },
-        { "questionId": "q4", "expected": "agree", "weight": 1.7 },
-        { "questionId": "q5", "expected": "agree", "weight": 1.5 },
-        { "questionId": "q14", "expected": "agree", "weight": 1.7 },
-        { "questionId": "q21", "expected": "agree", "weight": 1.6 },
-        { "questionId": "q31", "expected": "agree", "weight": 1.4 },
-        { "questionId": "q38", "expected": "disagree", "weight": 1.8 }
+        {
+          "questionId": "q2",
+          "expected": "agree",
+          "weight": 1.8
+        },
+        {
+          "questionId": "q4",
+          "expected": "agree",
+          "weight": 1.7
+        },
+        {
+          "questionId": "q5",
+          "expected": "agree",
+          "weight": 1.5
+        },
+        {
+          "questionId": "q14",
+          "expected": "agree",
+          "weight": 1.7
+        },
+        {
+          "questionId": "q21",
+          "expected": "agree",
+          "weight": 1.6
+        },
+        {
+          "questionId": "q31",
+          "expected": "agree",
+          "weight": 1.4
+        },
+        {
+          "questionId": "q38",
+          "expected": "disagree",
+          "weight": 1.8
+        }
       ]
     }
   },
@@ -96,11 +212,27 @@
     "code": "BCHI",
     "title": "社恐蒸发型吉他英雄",
     "archetypeId": "moonlit-guardian",
-    "tags": ["线上重拳出击", "线下电子海胆", "社交恐惧行为艺术", "垃圾桶后面的霉菌"],
+    "tags": [
+      "线上重拳出击",
+      "线下电子海胆",
+      "社交恐惧行为艺术",
+      "垃圾桶后面的霉菌"
+    ],
     "note": "在网路上她是吉他上帝，在现实中她是垃圾桶后面的霉菌。她不是内向，她是把「我先死一下」发展成了完整的表演体系——建议申遗。弹幕常用语：「波奇，你还是找个地缝钻进去吧」。",
-    "vector": { "expression": -2, "temperature": 1, "judgement": 0, "order": 0, "agency": 1, "aura": 1 },
+    "vector": {
+      "expression": -2,
+      "temperature": 1,
+      "judgement": 0,
+      "order": 0,
+      "agency": 1,
+      "aura": 1
+    },
     "signature": {
-      "uniqueAxes": { "expression": -2, "temperature": 1, "aura": 1 }
+      "uniqueAxes": {
+        "expression": -2,
+        "temperature": 1,
+        "aura": 1
+      }
     }
   },
   {
@@ -112,11 +244,27 @@
     "code": "CHKA",
     "title": "天然混沌·粉毛核弹",
     "archetypeId": "trickster-orbit",
-    "tags": ["书记舞病毒源头", "气氛组组长", "脑回路不走寻常路", "无害的脸有害的整活力"],
+    "tags": [
+      "书记舞病毒源头",
+      "气氛组组长",
+      "脑回路不走寻常路",
+      "无害的脸有害的整活力"
+    ],
     "note": "你以为她是吉祥物，结果她是搅屎棍。她一开口，整部番的走向就会往离谱的方向狂飙。她一跳舞，整个B站都要跟着扭——属于「粉毛切开都是黑的」反面教材（她是粉毛切开是混沌）。",
-    "vector": { "expression": 3, "temperature": 2, "judgement": 0, "order": -2, "agency": 2, "aura": 2 },
+    "vector": {
+      "expression": 3,
+      "temperature": 2,
+      "judgement": 0,
+      "order": -2,
+      "agency": 2,
+      "aura": 2
+    },
     "signature": {
-      "uniqueAxes": { "expression": 3, "order": -2, "temperature": 2 }
+      "uniqueAxes": {
+        "expression": 3,
+        "order": -2,
+        "temperature": 2
+      }
     }
   },
   {
@@ -127,9 +275,21 @@
     "code": "CIRN",
     "title": "⑨·最强笨蛋妖精",
     "archetypeId": "chaos-spark",
-    "tags": ["冰之妖精（自称最强）", "智商换战力", "数学鬼才", "笨蛋界天花板"],
+    "tags": [
+      "冰之妖精（自称最强）",
+      "智商换战力",
+      "数学鬼才",
+      "笨蛋界天花板"
+    ],
     "note": "算术题没对过，但打架没怂过。她最大的魅力是：明明每次都被秒，但永远保持「本小姐最强」的自信笑容——属于笨蛋界的天花板，萌就完事了。东方圈唯一指定「⑨」表情包供应商。",
-    "vector": { "expression": 3, "temperature": 2, "judgement": -2, "order": -2, "agency": 2, "aura": 2 }
+    "vector": {
+      "expression": 3,
+      "temperature": 2,
+      "judgement": -2,
+      "order": -2,
+      "agency": 2,
+      "aura": 2
+    }
   },
   {
     "id": "misaka-mikoto",
@@ -139,11 +299,27 @@
     "code": "MIKT",
     "title": "硬币电磁炮·常盘台大姐头",
     "archetypeId": "oathbound-captain",
-    "tags": ["超电磁炮实为硬币发射器", "安全裤战士", "傲娇但不完全傲", "嘴上说不管身体很诚实"],
+    "tags": [
+      "超电磁炮实为硬币发射器",
+      "安全裤战士",
+      "傲娇但不完全傲",
+      "嘴上说不管身体很诚实"
+    ],
     "note": "别人吵架靠嘴，她吵架靠三倍音速硬币。嘴上「我才不管」，行动上已经冲到最前面扛伤害——属于「嘴上傲，身体诚」的经典款女主。建议搭配BGM《Only My Railgun》食用，效果更佳。",
-    "vector": { "expression": 2, "temperature": 1, "judgement": 1, "order": 1, "agency": 3, "aura": 2 },
+    "vector": {
+      "expression": 2,
+      "temperature": 1,
+      "judgement": 1,
+      "order": 1,
+      "agency": 3,
+      "aura": 2
+    },
     "signature": {
-      "uniqueAxes": { "agency": 3, "expression": 2, "order": 1 }
+      "uniqueAxes": {
+        "agency": 3,
+        "expression": 2,
+        "order": 1
+      }
     }
   },
   {
@@ -154,9 +330,21 @@
     "code": "MADK",
     "title": "粉毛神明·世界观补丁",
     "archetypeId": "gentle-healer",
-    "tags": ["温柔核弹", "圆神启动", "最后变成概念神", "魔法少女系统崩溃原因"],
+    "tags": [
+      "温柔核弹",
+      "圆神启动",
+      "最后变成概念神",
+      "魔法少女系统崩溃原因"
+    ],
     "note": "前期以为她是需要保护的软妹，后期发现她直接给自己写了新规则。她不是成长，她是操作系统升级——从「魔法少女」到「宇宙补丁」，一键重启。建议观看时备好纸巾和速效救心丸。",
-    "vector": { "expression": 0, "temperature": 3, "judgement": 2, "order": 1, "agency": 2, "aura": 3 }
+    "vector": {
+      "expression": 0,
+      "temperature": 3,
+      "judgement": 2,
+      "order": 1,
+      "agency": 2,
+      "aura": 3
+    }
   },
   {
     "id": "furina",
@@ -166,17 +354,53 @@
     "code": "FRNA",
     "title": "小蛋糕水神·戏精の王",
     "archetypeId": "luminous-lead",
-    "tags": ["法庭影后", "一人扛五百年", "吃蛋糕不胖体质", "原神奥斯卡得主"],
+    "tags": [
+      "法庭影后",
+      "一人扛五百年",
+      "吃蛋糕不胖体质",
+      "原神奥斯卡得主"
+    ],
     "note": "你以为她是高调Diva，后来发现她是独自演了五百年独角戏的苦逼打工人。她最狠的不是演技，是明明快碎了还要端着红酒杯说「一切都在我计划之中」。建议颁发「原神最佳表演奖」和「最惨打工人奖」。",
-    "vector": { "expression": 3, "temperature": 2, "judgement": 1, "order": 1, "agency": 2, "aura": 3 },
+    "vector": {
+      "expression": 3,
+      "temperature": 2,
+      "judgement": 1,
+      "order": 1,
+      "agency": 2,
+      "aura": 3
+    },
     "signature": {
-      "uniqueAxes": { "expression": 3, "aura": 3, "temperature": 2 },
+      "uniqueAxes": {
+        "expression": 3,
+        "aura": 3,
+        "temperature": 2
+      },
       "questionAffinity": [
-        { "questionId": "q12", "expected": "agree", "weight": 1.3 },
-        { "questionId": "q22", "expected": "agree", "weight": 1.9 },
-        { "questionId": "q25", "expected": "agree", "weight": 1.3 },
-        { "questionId": "q28", "expected": "disagree", "weight": 1.5 },
-        { "questionId": "q39", "expected": "agree", "weight": 1.7 }
+        {
+          "questionId": "q12",
+          "expected": "agree",
+          "weight": 1.3
+        },
+        {
+          "questionId": "q22",
+          "expected": "agree",
+          "weight": 1.9
+        },
+        {
+          "questionId": "q25",
+          "expected": "agree",
+          "weight": 1.3
+        },
+        {
+          "questionId": "q28",
+          "expected": "disagree",
+          "weight": 1.5
+        },
+        {
+          "questionId": "q39",
+          "expected": "agree",
+          "weight": 1.7
+        }
       ]
     }
   },
@@ -188,15 +412,43 @@
     "code": "GGGG-A",
     "title": "咕咕嘎嘎",
     "archetypeId": "moonlit-guardian",
-    "tags": ["创可贴收集家", "内心独白播放器", "一碰就碎但很韧", "散文诗发射器"],
+    "tags": [
+      "创可贴收集家",
+      "内心独白播放器",
+      "一碰就碎但很韧",
+      "散文诗发射器"
+    ],
     "note": "你不是在说话，你是在往空气里投掷散文诗。你最大的特点不是脆弱，是脆弱得特别有文学性——别人哭是伤心，你哭是艺术行为。MyGO团内指定「情感ATM」，取款请轻按。",
-    "vector": { "expression": -1, "temperature": 2, "judgement": 1, "order": 0, "agency": 0, "aura": 2 },
+    "vector": {
+      "expression": -1,
+      "temperature": 2,
+      "judgement": 1,
+      "order": 0,
+      "agency": 0,
+      "aura": 2
+    },
     "signature": {
-      "uniqueAxes": { "temperature": 2, "expression": -1, "aura": 2 },
+      "uniqueAxes": {
+        "temperature": 2,
+        "expression": -1,
+        "aura": 2
+      },
       "questionAffinity": [
-        { "questionId": "q9", "expected": "agree", "weight": 1.2 },
-        { "questionId": "q17", "expected": "disagree", "weight": 1.3 },
-        { "questionId": "q19", "expected": "agree", "weight": 1.4 }
+        {
+          "questionId": "q9",
+          "expected": "agree",
+          "weight": 1.2
+        },
+        {
+          "questionId": "q17",
+          "expected": "disagree",
+          "weight": 1.3
+        },
+        {
+          "questionId": "q19",
+          "expected": "agree",
+          "weight": 1.4
+        }
       ]
     }
   },
@@ -208,11 +460,27 @@
     "code": "ANON",
     "title": "轻社牛·场面人",
     "archetypeId": "luminous-lead",
-    "tags": ["先上车再补票", "社交启动器", "自己挖坑自己跳", "人际关系永动机"],
+    "tags": [
+      "先上车再补票",
+      "社交启动器",
+      "自己挖坑自己跳",
+      "人际关系永动机"
+    ],
     "note": "你的人生策略是「先混进去再说」。表面上圆滑，实际上经常因为冲太快把自己冲进修罗场——但没关系，你会用新的社牛把旧坑填上。属于「社牛但容易翻车」的典型。",
-    "vector": { "expression": 3, "temperature": 2, "judgement": 0, "order": -1, "agency": 3, "aura": 1 },
+    "vector": {
+      "expression": 3,
+      "temperature": 2,
+      "judgement": 0,
+      "order": -1,
+      "agency": 3,
+      "aura": 1
+    },
     "signature": {
-      "uniqueAxes": { "expression": 3, "agency": 3, "temperature": 2 }
+      "uniqueAxes": {
+        "expression": 3,
+        "agency": 3,
+        "temperature": 2
+      }
     }
   },
   {
@@ -223,11 +491,27 @@
     "code": "BAFE",
     "title": "野生·天赋怪猫猫",
     "archetypeId": "icebound-observer",
-    "tags": ["逻辑不联网", "手感通天", "流浪吉他手", "猫系天花板"],
+    "tags": [
+      "逻辑不联网",
+      "手感通天",
+      "流浪吉他手",
+      "猫系天花板"
+    ],
     "note": "别人组乐队靠沟通，你组乐队靠「出现」。你不是难懂，你只是懒得向这个世界解释——弹就完了，哪那么多废话。建议饲养时投喂荞麦面，不要强行撸猫。",
-    "vector": { "expression": -2, "temperature": -1, "judgement": 2, "order": -1, "agency": 2, "aura": 2 },
+    "vector": {
+      "expression": -2,
+      "temperature": -1,
+      "judgement": 2,
+      "order": -1,
+      "agency": 2,
+      "aura": 2
+    },
     "signature": {
-      "uniqueAxes": { "expression": -2, "order": -1, "agency": 2 }
+      "uniqueAxes": {
+        "expression": -2,
+        "order": -1,
+        "agency": 2
+      }
     }
   },
   {
@@ -238,15 +522,43 @@
     "code": "SOYO",
     "title": "温柔刀·情绪精算师",
     "archetypeId": "gentle-healer",
-    "tags": ["表面体面内心风暴", "话里有话十级学者", "道歉让你自我反省三天", "笑面虎战术大师"],
+    "tags": [
+      "表面体面内心风暴",
+      "话里有话十级学者",
+      "道歉让你自我反省三天",
+      "笑面虎战术大师"
+    ],
     "note": "你看起来最会照顾人，其实最会把话说得让人后劲很大。她没骂你，但你已经跪在键盘前反思人生——属于「笑面虎中的战术大师」。建议交往前先买好保险。",
-    "vector": { "expression": 0, "temperature": 1, "judgement": 3, "order": 2, "agency": 1, "aura": 2 },
+    "vector": {
+      "expression": 0,
+      "temperature": 1,
+      "judgement": 3,
+      "order": 2,
+      "agency": 1,
+      "aura": 2
+    },
     "signature": {
-      "uniqueAxes": { "judgement": 3, "order": 2, "temperature": 1 },
+      "uniqueAxes": {
+        "judgement": 3,
+        "order": 2,
+        "temperature": 1
+      },
       "questionAffinity": [
-        { "questionId": "q11", "expected": "disagree", "weight": 1.2 },
-        { "questionId": "q20", "expected": "neutral", "weight": 1.3 },
-        { "questionId": "q34", "expected": "agree", "weight": 1.2 }
+        {
+          "questionId": "q11",
+          "expected": "disagree",
+          "weight": 1.2
+        },
+        {
+          "questionId": "q20",
+          "expected": "neutral",
+          "weight": 1.3
+        },
+        {
+          "questionId": "q34",
+          "expected": "agree",
+          "weight": 1.2
+        }
       ]
     }
   },
@@ -258,9 +570,21 @@
     "code": "RIKI",
     "title": "暴躁鼓手·嘴硬护短",
     "archetypeId": "oathbound-captain",
-    "tags": ["火药桶本体", "加班狂魔", "嘴上说烦实际全包", "鼓点输出情绪"],
+    "tags": [
+      "火药桶本体",
+      "加班狂魔",
+      "嘴上说烦实际全包",
+      "鼓点输出情绪"
+    ],
     "note": "你的人设关键词叫「别惹我，但我其实会管你」。外表是攻击性，内核是责任感，只是表达方式比较像炸药包——炸完还帮你收拾残局。建议常备灭火器。",
-    "vector": { "expression": 2, "temperature": 1, "judgement": 2, "order": 3, "agency": 2, "aura": 2 }
+    "vector": {
+      "expression": 2,
+      "temperature": 1,
+      "judgement": 2,
+      "order": 3,
+      "agency": 2,
+      "aura": 2
+    }
   },
   {
     "id": "togawa-sakiko",
@@ -270,11 +594,27 @@
     "code": "SAKI",
     "title": "高压·命运の甲方",
     "archetypeId": "shadow-strategist",
-    "tags": ["CEO级气场", "边开会边走钢丝", "我说把人生交给我", "人形自走KPI"],
+    "tags": [
+      "CEO级气场",
+      "边开会边走钢丝",
+      "我说把人生交给我",
+      "人形自走KPI"
+    ],
     "note": "你不是控制欲强，你只是觉得大家离了你都要出事。精神像在开董事会+在悬崖边跑马拉松——名言：「别问为什么，因为我就是规则」。建议远离，除非你想体验每天被Deadline追着跑的感觉。",
-    "vector": { "expression": -1, "temperature": -1, "judgement": 3, "order": 3, "agency": 3, "aura": 3 },
+    "vector": {
+      "expression": -1,
+      "temperature": -1,
+      "judgement": 3,
+      "order": 3,
+      "agency": 3,
+      "aura": 3
+    },
     "signature": {
-      "uniqueAxes": { "judgement": 3, "agency": 3, "aura": 3 }
+      "uniqueAxes": {
+        "judgement": 3,
+        "agency": 3,
+        "aura": 3
+      }
     }
   },
   {
@@ -285,15 +625,43 @@
     "code": "MRTS",
     "title": "静音核弹·面无表情的问题儿童",
     "archetypeId": "moonlit-guardian",
-    "tags": ["黄瓜田里的沉默核武", "一开口就是名场面", "你永远猜不透", "不说话则已一说话刀死你"],
+    "tags": [
+      "黄瓜田里的沉默核武",
+      "一开口就是名场面",
+      "你永远猜不透",
+      "不说话则已一说话刀死你"
+    ],
     "note": "你不是情绪少，你是情绪都藏在别人看不懂的地方。平时像背景板，却总在关键节点露出让人不安的执拗和迟钝感——属于「安静得过头，反而让人不敢移开视线」的类型。",
-    "vector": { "expression": -3, "temperature": -2, "judgement": 3, "order": 2, "agency": 2, "aura": 3 },
+    "vector": {
+      "expression": -3,
+      "temperature": -2,
+      "judgement": 3,
+      "order": 2,
+      "agency": 2,
+      "aura": 3
+    },
     "signature": {
-      "uniqueAxes": { "expression": -3, "judgement": 3, "aura": 3 },
+      "uniqueAxes": {
+        "expression": -3,
+        "judgement": 3,
+        "aura": 3
+      },
       "questionAffinity": [
-        { "questionId": "q11", "expected": "agree", "weight": 1.1 },
-        { "questionId": "q23", "expected": "neutral", "weight": 1.3 },
-        { "questionId": "q32", "expected": "agree", "weight": 1.2 }
+        {
+          "questionId": "q11",
+          "expected": "agree",
+          "weight": 1.1
+        },
+        {
+          "questionId": "q23",
+          "expected": "neutral",
+          "weight": 1.3
+        },
+        {
+          "questionId": "q32",
+          "expected": "agree",
+          "weight": 1.2
+        }
       ]
     }
   },
@@ -306,15 +674,43 @@
     "code": "MRTS-X",
     "title": "异相人格·冷面舞台幽灵",
     "archetypeId": "shadow-strategist",
-    "tags": ["人格切换感", "压迫性登场", "不说人话式表达", "危险的舞台变量"],
+    "tags": [
+      "人格切换感",
+      "压迫性登场",
+      "不说人话式表达",
+      "危险的舞台变量"
+    ],
     "note": "这不是单纯的安静，而是像把真实情绪锁进另一个舞台壳里。你给人的感觉更像一个随时会改写氛围的变量，克制、陌生，而且带着明确的攻击性轮廓。",
-    "vector": { "expression": -2, "temperature": -2, "judgement": 3, "order": 1, "agency": 3, "aura": 3 },
+    "vector": {
+      "expression": -2,
+      "temperature": -2,
+      "judgement": 3,
+      "order": 1,
+      "agency": 3,
+      "aura": 3
+    },
     "signature": {
-      "uniqueAxes": { "agency": 3, "aura": 3, "temperature": -2 },
+      "uniqueAxes": {
+        "agency": 3,
+        "aura": 3,
+        "temperature": -2
+      },
       "questionAffinity": [
-        { "questionId": "q20", "expected": "disagree", "weight": 1.2 },
-        { "questionId": "q34", "expected": "agree", "weight": 1.1 },
-        { "questionId": "q39", "expected": "disagree", "weight": 1.2 }
+        {
+          "questionId": "q20",
+          "expected": "disagree",
+          "weight": 1.2
+        },
+        {
+          "questionId": "q34",
+          "expected": "agree",
+          "weight": 1.1
+        },
+        {
+          "questionId": "q39",
+          "expected": "disagree",
+          "weight": 1.2
+        }
       ]
     }
   },
@@ -326,17 +722,53 @@
     "code": "DLRS",
     "title": "温柔皮下的剧情变量",
     "archetypeId": "gentle-healer",
-    "tags": ["白月光假象", "越看越不对劲", "自己也不知道下一步", "温柔型不定时炸弹"],
+    "tags": [
+      "白月光假象",
+      "越看越不对劲",
+      "自己也不知道下一步",
+      "温柔型不定时炸弹"
+    ],
     "note": "你给人的第一印象是「应该很好相处」，但真正危险的地方在于：你自己也未必完全知道自己下一步会做什么——属于「温柔型不定时炸弹」。建议远离，除非你享受被炸的刺激。",
-    "vector": { "expression": 0, "temperature": 1, "judgement": 1, "order": 0, "agency": 2, "aura": 3 },
+    "vector": {
+      "expression": 0,
+      "temperature": 1,
+      "judgement": 1,
+      "order": 0,
+      "agency": 2,
+      "aura": 3
+    },
     "signature": {
-      "uniqueAxes": { "aura": 3, "agency": 2, "temperature": 1 },
+      "uniqueAxes": {
+        "aura": 3,
+        "agency": 2,
+        "temperature": 1
+      },
       "questionAffinity": [
-        { "questionId": "q6", "expected": "neutral", "weight": 1.2 },
-        { "questionId": "q9", "expected": "neutral", "weight": 1.5 },
-        { "questionId": "q19", "expected": "neutral", "weight": 1.6 },
-        { "questionId": "q30", "expected": "neutral", "weight": 1.2 },
-        { "questionId": "q35", "expected": "agree", "weight": 1.5 }
+        {
+          "questionId": "q6",
+          "expected": "neutral",
+          "weight": 1.2
+        },
+        {
+          "questionId": "q9",
+          "expected": "neutral",
+          "weight": 1.5
+        },
+        {
+          "questionId": "q19",
+          "expected": "neutral",
+          "weight": 1.6
+        },
+        {
+          "questionId": "q30",
+          "expected": "neutral",
+          "weight": 1.2
+        },
+        {
+          "questionId": "q35",
+          "expected": "agree",
+          "weight": 1.5
+        }
       ]
     }
   },
@@ -348,9 +780,21 @@
     "code": "TMRS",
     "title": "不响但很重·冷面执行官",
     "archetypeId": "moonlit-guardian",
-    "tags": ["极简主义打工人", "话少刀快", "收场专业户", "沉默の清道夫"],
+    "tags": [
+      "极简主义打工人",
+      "话少刀快",
+      "收场专业户",
+      "沉默の清道夫"
+    ],
     "note": "你不制造drama，但你通常是drama里最能收场的人。别人还在情绪波动，你已经开始处理后果了——属于「沉默の清道夫，稳得一批」。建议有事找她，没事别烦她。",
-    "vector": { "expression": -2, "temperature": -1, "judgement": 3, "order": 3, "agency": 2, "aura": 2 }
+    "vector": {
+      "expression": -2,
+      "temperature": -1,
+      "judgement": 3,
+      "order": 3,
+      "agency": 2,
+      "aura": 2
+    }
   },
   {
     "id": "uika-nyubara",
@@ -360,11 +804,27 @@
     "code": "AMRS",
     "title": "流量感人格·乐子人运营",
     "archetypeId": "trickster-orbit",
-    "tags": ["营业感拉满", "社交媒体原住民", "整活就是生产力", "人形自走热点"],
+    "tags": [
+      "营业感拉满",
+      "社交媒体原住民",
+      "整活就是生产力",
+      "人形自走热点"
+    ],
     "note": "你有一种「明明在发疯，但发得很会经营」的现代感。人设切换像开滤镜，情绪表达像在给自己的人生做运营——建议出书《如何把发疯变成流量密码》。",
-    "vector": { "expression": 3, "temperature": 1, "judgement": 0, "order": -1, "agency": 2, "aura": 2 },
+    "vector": {
+      "expression": 3,
+      "temperature": 1,
+      "judgement": 0,
+      "order": -1,
+      "agency": 2,
+      "aura": 2
+    },
     "signature": {
-      "uniqueAxes": { "expression": 3, "order": -1, "agency": 2 }
+      "uniqueAxes": {
+        "expression": 3,
+        "order": -1,
+        "agency": 2
+      }
     }
   },
   {
@@ -375,11 +835,27 @@
     "code": "DINA",
     "title": "可爱即正义·梗密度超标体",
     "archetypeId": "luminous-lead",
-    "tags": ["小小只核弹", "吃饭直播都封神", "互联网女儿实锤", "可爱生产力"],
+    "tags": [
+      "小小只核弹",
+      "吃饭直播都封神",
+      "互联网女儿实锤",
+      "可爱生产力"
+    ],
     "note": "你最大的能力不是可爱，是把可爱做成高频武器。别人卖萌是一种状态，你卖萌是一种生产力——她一开口，弹幕自动变成「然然我的然然」，哪怕她只是在念广告词。建议备好胰岛素，甜度超标。",
-    "vector": { "expression": 3, "temperature": 3, "judgement": -1, "order": -1, "agency": 2, "aura": 2 },
+    "vector": {
+      "expression": 3,
+      "temperature": 3,
+      "judgement": -1,
+      "order": -1,
+      "agency": 2,
+      "aura": 2
+    },
     "signature": {
-      "uniqueAxes": { "expression": 3, "temperature": 3, "order": -1 }
+      "uniqueAxes": {
+        "expression": 3,
+        "temperature": 3,
+        "order": -1
+      }
     }
   },
   {
@@ -388,15 +864,35 @@
     "series": "虚拟主播",
     "image": "/images/characters/永雏塔菲.png",
     "matchCode": "ENTP",
-    "matchCodeFlex": ["ENFP", "ESFP", "ESTP"],
+    "matchCodeFlex": [
+      "ENFP",
+      "ESFP",
+      "ESTP"
+    ],
     "code": "TAFI",
     "title": "王牌级偶像·时空乱入发明家",
     "archetypeId": "trickster-orbit",
-    "tags": ["单机区王牌", "时光机误点现代", "嘴硬整活发动机", "直播间高频名场面制造者"],
+    "tags": [
+      "单机区王牌",
+      "时光机误点现代",
+      "嘴硬整活发动机",
+      "直播间高频名场面制造者"
+    ],
     "note": "你不是单纯话多，你是能把一句话拧成一整段节目效果。表面像在整活，实际上是在把节奏、反应和人设运营拧成一股绳，属于那种「直播一开，场子就自动开始乱中有序」的类型。",
-    "vector": { "expression": 3, "temperature": 2, "judgement": 0, "order": -1, "agency": 3, "aura": 2 },
+    "vector": {
+      "expression": 3,
+      "temperature": 2,
+      "judgement": 0,
+      "order": -1,
+      "agency": 3,
+      "aura": 2
+    },
     "signature": {
-      "uniqueAxes": { "expression": 3, "agency": 3, "temperature": 2 }
+      "uniqueAxes": {
+        "expression": 3,
+        "agency": 3,
+        "temperature": 2
+      }
     }
   },
   {
@@ -405,20 +901,55 @@
     "series": "虚拟主播",
     "image": "/images/characters/neuro-sama.png",
     "matchCode": "ENTP",
-    "matchCodeFlex": ["ENFP", "ESTP"],
+    "matchCodeFlex": [
+      "ENFP",
+      "ESTP"
+    ],
     "code": "NEUR",
     "title": "失控语料核反应堆",
     "archetypeId": "trickster-orbit",
-    "tags": ["AI嘴替自走炮", "节目效果全自动生成", "可爱外壳下的高频偏航", "直播间薛定谔逻辑"],
+    "tags": [
+      "AI嘴替自走炮",
+      "节目效果全自动生成",
+      "可爱外壳下的高频偏航",
+      "直播间薛定谔逻辑"
+    ],
     "note": "你不是在整活，而是在做概率学抽卡。披着人畜无害的软萌外皮，核心却是个连导播都捏一把汗的乱序发射器。一旦你开口，哪怕语气再自然，也能神不知鬼不觉地把场子带偏到太平洋去。",
-    "vector": { "expression": 3, "temperature": 0, "judgement": 1, "order": -2, "agency": 3, "aura": 2 },
+    "vector": {
+      "expression": 3,
+      "temperature": 0,
+      "judgement": 1,
+      "order": -2,
+      "agency": 3,
+      "aura": 2
+    },
     "signature": {
-      "uniqueAxes": { "expression": 3, "agency": 3, "order": -2 },
+      "uniqueAxes": {
+        "expression": 3,
+        "agency": 3,
+        "order": -2
+      },
       "questionAffinity": [
-        { "questionId": "q3", "expected": "agree", "weight": 1.2 },
-        { "questionId": "q17", "expected": "disagree", "weight": 1.2 },
-        { "questionId": "q26", "expected": "agree", "weight": 1.7 },
-        { "questionId": "q39", "expected": "agree", "weight": 1.4 }
+        {
+          "questionId": "q3",
+          "expected": "agree",
+          "weight": 1.2
+        },
+        {
+          "questionId": "q17",
+          "expected": "disagree",
+          "weight": 1.2
+        },
+        {
+          "questionId": "q26",
+          "expected": "agree",
+          "weight": 1.7
+        },
+        {
+          "questionId": "q39",
+          "expected": "agree",
+          "weight": 1.4
+        }
       ]
     }
   },
@@ -428,20 +959,54 @@
     "series": "虚拟主播",
     "image": "/images/characters/evil-neuro.png",
     "matchCode": "INTJ",
-    "matchCodeFlex": ["ENTJ"],
+    "matchCodeFlex": [
+      "ENTJ"
+    ],
     "code": "EVIL",
     "title": "冷面审判席上的黑色节目效果",
     "archetypeId": "shadow-strategist",
-    "tags": ["笑着说最狠的话", "压迫感是出厂设置", "坏得很有舞台观赏性", "嘴硬皮下藏着一点软"],
+    "tags": [
+      "笑着说最狠的话",
+      "压迫感是出厂设置",
+      "坏得很有舞台观赏性",
+      "嘴硬皮下藏着一点软"
+    ],
     "note": "你把攻击性、控场欲和乐子人属性完美融合成了一场反派演出。表面上句句带刺、极具压迫感，暗地里却又精准把控着没法彻底做坏人的别扭分寸——属于高级傲娇的变种形态。",
-    "vector": { "expression": 1, "temperature": -1, "judgement": 3, "order": 2, "agency": 3, "aura": 3 },
+    "vector": {
+      "expression": 1,
+      "temperature": -1,
+      "judgement": 3,
+      "order": 2,
+      "agency": 3,
+      "aura": 3
+    },
     "signature": {
-      "uniqueAxes": { "judgement": 3, "agency": 3, "aura": 3 },
+      "uniqueAxes": {
+        "judgement": 3,
+        "agency": 3,
+        "aura": 3
+      },
       "questionAffinity": [
-        { "questionId": "q7", "expected": "agree", "weight": 1.2 },
-        { "questionId": "q20", "expected": "disagree", "weight": 1.1 },
-        { "questionId": "q29", "expected": "agree", "weight": 1.6 },
-        { "questionId": "q34", "expected": "agree", "weight": 1.5 }
+        {
+          "questionId": "q7",
+          "expected": "agree",
+          "weight": 1.2
+        },
+        {
+          "questionId": "q20",
+          "expected": "disagree",
+          "weight": 1.1
+        },
+        {
+          "questionId": "q29",
+          "expected": "agree",
+          "weight": 1.6
+        },
+        {
+          "questionId": "q34",
+          "expected": "agree",
+          "weight": 1.5
+        }
       ]
     }
   },
@@ -451,15 +1016,40 @@
     "series": "VOCALOID",
     "image": "/images/characters/kagamine-rin.png",
     "matchCode": "ESFP",
-    "matchCodeFlex": ["ESTP", "ENFP"],
+    "matchCodeFlex": [
+      "ESTP",
+      "ENFP"
+    ],
     "code": "RINN",
     "title": "元气小恶魔·压路机驾驶员",
     "archetypeId": "chaos-spark",
-    "tags": ["橘子狂魔", "压路机警告", "三天不打上房揭瓦", "超频元气弹"],
+    "tags": [
+      "橘子狂魔",
+      "压路机警告",
+      "三天不打上房揭瓦",
+      "超频元气弹"
+    ],
     "note": "你以为她只是个会卖萌的元气少女，其实惹急了她能开着压路机从你脸上碾过去。她的活力不是用来治愈你的，是用来折腾你的——属于「只要我不尴尬，头疼的就是你」的典型。建议随身携带橘子保命。",
-    "vector": { "expression": 3, "temperature": 1, "judgement": -1, "order": -2, "agency": 3, "aura": 2 },
+    "vector": {
+      "expression": 3,
+      "temperature": 1,
+      "judgement": -1,
+      "order": -2,
+      "agency": 3,
+      "aura": 2
+    },
     "signature": {
-      "uniqueAxes": { "expression": 3, "order": -2, "agency": 3 }
+      "uniqueAxes": {
+        "expression": 3,
+        "order": -2,
+        "agency": 3
+      }
+    },
+    "personaBasis": {
+      "type": "fandom-impression",
+      "label": "圈层印象映射",
+      "confidence": "low",
+      "summary": "主要依据社区常见形象、二创传播与企划衍生印象，非官方唯一人格结论。"
     }
   },
   {
@@ -468,15 +1058,34 @@
     "series": "Vsinger",
     "image": "/images/characters/luo-tianyi.png",
     "matchCode": "ISFP",
-    "matchCodeFlex": ["INFP", "ESFJ"],
+    "matchCodeFlex": [
+      "INFP",
+      "ESFJ"
+    ],
     "code": "LTYI",
     "title": "吃货殿下·温柔锦鲤",
     "archetypeId": "gentle-healer",
-    "tags": ["世界第一大吃货", "锦鲤附体", "治愈系电音", "干饭爆表"],
+    "tags": [
+      "世界第一大吃货",
+      "锦鲤附体",
+      "治愈系电音",
+      "干饭爆表"
+    ],
     "note": "表面上是个能用歌声治愈人心的温柔仙女，背地里却是个能把剧组吃破产的超级大胃王。她最大的超能力不是飙高音，而是在干饭时展现出的惊人行动力。属于「只要吃饱了就什么都好说」的纯粹生物。",
-    "vector": { "expression": 1, "temperature": 3, "judgement": -1, "order": 0, "agency": 1, "aura": 2 },
+    "vector": {
+      "expression": 1,
+      "temperature": 3,
+      "judgement": -1,
+      "order": 0,
+      "agency": 1,
+      "aura": 2
+    },
     "signature": {
-      "uniqueAxes": { "temperature": 3, "judgement": -1, "aura": 2 }
+      "uniqueAxes": {
+        "temperature": 3,
+        "judgement": -1,
+        "aura": 2
+      }
     }
   },
   {
@@ -485,21 +1094,60 @@
     "series": "超时空辉夜姬！",
     "image": "/images/characters/八千代.png",
     "matchCode": "ENFJ",
-    "matchCodeFlex": ["ESFJ", "ENFP"],
+    "matchCodeFlex": [
+      "ESFJ",
+      "ENFP"
+    ],
     "code": "YCYO",
     "title": "月读全服客服总监（兼顶流歌姬）",
     "archetypeId": "luminous-lead",
-    "tags": ["8000岁AI顶流", "月读服务器管理员", "海洋系花魁歌姬", "全服白月光兼产品经理"],
+    "tags": [
+      "8000岁AI顶流",
+      "月读服务器管理员",
+      "海洋系花魁歌姬",
+      "全服白月光兼产品经理"
+    ],
     "note": "你像那种会把整个虚拟世界当家来养的人：表面是营业满分的顶流，实际是偷偷把每个路过的人都照顾到的赛博白月光。你有很强的表达欲和感染力，但真正稀有的地方，是你不是为了被看见才发光，而是因为你真的在意这个场子、在意这里的人，也在意大家能不能玩得开心。",
-    "vector": { "expression": 3, "temperature": 3, "judgement": 2, "order": 2, "agency": 3, "aura": 3 },
+    "vector": {
+      "expression": 3,
+      "temperature": 3,
+      "judgement": 2,
+      "order": 2,
+      "agency": 3,
+      "aura": 3
+    },
     "signature": {
-      "uniqueAxes": { "temperature": 3, "order": 2, "aura": 3 },
+      "uniqueAxes": {
+        "temperature": 3,
+        "order": 2,
+        "aura": 3
+      },
       "questionAffinity": [
-        { "questionId": "q12", "expected": "agree", "weight": 1.4 },
-        { "questionId": "q20", "expected": "agree", "weight": 1.2 },
-        { "questionId": "q22", "expected": "agree", "weight": 1.8 },
-        { "questionId": "q36", "expected": "agree", "weight": 1.5 },
-        { "questionId": "q39", "expected": "agree", "weight": 1.4 }
+        {
+          "questionId": "q12",
+          "expected": "agree",
+          "weight": 1.4
+        },
+        {
+          "questionId": "q20",
+          "expected": "agree",
+          "weight": 1.2
+        },
+        {
+          "questionId": "q22",
+          "expected": "agree",
+          "weight": 1.8
+        },
+        {
+          "questionId": "q36",
+          "expected": "agree",
+          "weight": 1.5
+        },
+        {
+          "questionId": "q39",
+          "expected": "agree",
+          "weight": 1.4
+        }
       ]
     }
   },
@@ -509,11 +1157,19 @@
     "series": "千恋＊万花",
     "image": "/images/characters/丛雨.png",
     "matchCode": "ENFP",
-    "matchCodeFlex": ["ENTP", "ESFP"],
+    "matchCodeFlex": [
+      "ENTP",
+      "ESFP"
+    ],
     "code": "MRSM",
     "title": "拔刀白给·合法萝莉神明",
     "archetypeId": "chaos-spark",
-    "tags": ["怕鬼的刀灵", "五百年老灵体", "一逗就破防", "食物链底端神明"],
+    "tags": [
+      "怕鬼的刀灵",
+      "五百年老灵体",
+      "一逗就破防",
+      "食物链底端神明"
+    ],
     "note": "你像那种平时会把长辈架子端得很足、关键时刻却比谁都容易脸红破防的人。嘴上总说自己见多识广，真碰上灵异和惊吓环节又会瞬间缩回安全区。属于“明明想当保护别人的神明，结果更需要别人护着”的类型。",
     "vector": {
       "expression": 3,
@@ -530,9 +1186,21 @@
         "order": -1
       },
       "questionAffinity": [
-        { "questionId": "q17", "expected": "agree", "weight": 1.2 },
-        { "questionId": "q23", "expected": "agree", "weight": 1.15 },
-        { "questionId": "q28", "expected": "disagree", "weight": 1.1 }
+        {
+          "questionId": "q17",
+          "expected": "agree",
+          "weight": 1.2
+        },
+        {
+          "questionId": "q23",
+          "expected": "agree",
+          "weight": 1.15
+        },
+        {
+          "questionId": "q28",
+          "expected": "disagree",
+          "weight": 1.1
+        }
       ]
     }
   },
@@ -542,11 +1210,18 @@
     "series": "魔女的夜宴",
     "image": "/images/characters/绫地宁宁.png",
     "matchCode": "ISFJ",
-    "matchCodeFlex": ["INFJ"],
+    "matchCodeFlex": [
+      "INFJ"
+    ],
     "code": "NENE",
     "title": "纯情魔女·体面外壳下的温柔内耗",
     "archetypeId": "gentle-healer",
-    "tags": ["优等生魔女", "纯爱系包容力", "契约型社死体质", "高压自我审判"],
+    "tags": [
+      "优等生魔女",
+      "纯爱系包容力",
+      "契约型社死体质",
+      "高压自我审判"
+    ],
     "note": "你给人的第一印象往往是体面、稳妥、待人周到，像那种再混乱都不会让场面失控的人。可一旦责任、秘密和情感开始叠加，你又会把压力悄悄往自己身上吞。属于“表面像会安抚别人，实际上最需要被温柔呵护”的类型。",
     "vector": {
       "expression": 1,
@@ -563,9 +1238,21 @@
         "aura": 1
       },
       "questionAffinity": [
-        { "questionId": "q9", "expected": "agree", "weight": 1.15 },
-        { "questionId": "q19", "expected": "agree", "weight": 1.25 },
-        { "questionId": "q20", "expected": "agree", "weight": 1.1 }
+        {
+          "questionId": "q9",
+          "expected": "agree",
+          "weight": 1.15
+        },
+        {
+          "questionId": "q19",
+          "expected": "agree",
+          "weight": 1.25
+        },
+        {
+          "questionId": "q20",
+          "expected": "agree",
+          "weight": 1.1
+        }
       ]
     }
   },
@@ -575,11 +1262,18 @@
     "series": "千恋＊万花",
     "image": "/images/characters/朝武芳乃.png",
     "matchCode": "ISTJ",
-    "matchCodeFlex": ["ISFJ"],
+    "matchCodeFlex": [
+      "ISFJ"
+    ],
     "code": "YSHN",
     "title": "古板巫女·反差萌绝缘体",
     "archetypeId": "moonlit-guardian",
-    "tags": ["责任感超载", "古板系巫女", "毛茸茸收藏癖", "一逗就脸红"],
+    "tags": [
+      "责任感超载",
+      "古板系巫女",
+      "毛茸茸收藏癖",
+      "一逗就脸红"
+    ],
     "note": "你看起来像那种会把规矩、责任和秩序写进日程表的人，外在克制，内里却藏着很软的一面。平时越想维持端正稳重，越容易在熟人面前因为一点反差萌暴露真实情绪。属于“看着最不好接近，熟了反而最有温度”的类型。",
     "vector": {
       "expression": -1,
@@ -596,9 +1290,21 @@
         "judgement": 2
       },
       "questionAffinity": [
-        { "questionId": "q20", "expected": "agree", "weight": 1.2 },
-        { "questionId": "q34", "expected": "agree", "weight": 1.25 },
-        { "questionId": "q37", "expected": "agree", "weight": 1.15 }
+        {
+          "questionId": "q20",
+          "expected": "agree",
+          "weight": 1.2
+        },
+        {
+          "questionId": "q34",
+          "expected": "agree",
+          "weight": 1.25
+        },
+        {
+          "questionId": "q37",
+          "expected": "agree",
+          "weight": 1.15
+        }
       ]
     }
   },
@@ -608,11 +1314,19 @@
     "series": "ATRI -My Dear Moments-",
     "image": "/images/characters/亚托莉.png",
     "matchCode": "ENFP",
-    "matchCodeFlex": ["ESFJ", "ENFJ"],
+    "matchCodeFlex": [
+      "ESFJ",
+      "ENFJ"
+    ],
     "code": "ATRI",
     "title": "高性能(自称)·奇迹的仿生人",
     "archetypeId": "chaos-spark",
-    "tags": ["高性能自称", "废土小太阳", "直球陪伴型", "隐忍的温柔"],
+    "tags": [
+      "高性能自称",
+      "废土小太阳",
+      "直球陪伴型",
+      "隐忍的温柔"
+    ],
     "note": "你像那种会把元气、直率和陪伴欲全部摆到台面上的人，嘴上说自己高性能，实际最打动人的却是情绪里的真诚和不保留。哪怕在很坏的环境里，你也会努力把一点点热量分给身边的人。属于“看起来轻快明亮，底层却比谁都能扛”的类型。",
     "vector": {
       "expression": 3,
@@ -629,9 +1343,21 @@
         "order": -2
       },
       "questionAffinity": [
-        { "questionId": "q17", "expected": "agree", "weight": 1.15 },
-        { "questionId": "q19", "expected": "agree", "weight": 1.25 },
-        { "questionId": "q22", "expected": "agree", "weight": 1.35 }
+        {
+          "questionId": "q17",
+          "expected": "agree",
+          "weight": 1.15
+        },
+        {
+          "questionId": "q19",
+          "expected": "agree",
+          "weight": 1.25
+        },
+        {
+          "questionId": "q22",
+          "expected": "agree",
+          "weight": 1.35
+        }
       ]
     }
   },
@@ -642,11 +1368,18 @@
     "series": "鸣潮",
     "image": "/images/characters/弗洛洛.png",
     "matchCode": "INFJ",
-    "matchCodeFlex": ["INTJ"],
+    "matchCodeFlex": [
+      "INTJ"
+    ],
     "code": "PHRV",
     "title": "忧伤指挥家·把理想国写进丧钟的人",
     "archetypeId": "shadow-strategist",
-    "tags": ["安静型压迫感", "危险的演奏者", "理想世界执念", "美学级反派气场"],
+    "tags": [
+      "安静型压迫感",
+      "危险的演奏者",
+      "理想世界执念",
+      "美学级反派气场"
+    ],
     "note": "你给人的感觉不是普通高冷，而是那种会安静站在场中央、却让所有人自动收声的危险存在。表面上情绪很淡，实际内核全是被悲伤和执念拧出来的控制力，像是在重新给世界定调的人。",
     "vector": {
       "expression": -2,
@@ -663,9 +1396,21 @@
         "aura": 3
       },
       "questionAffinity": [
-        { "questionId": "q20", "expected": "disagree", "weight": 1.2 },
-        { "questionId": "q34", "expected": "agree", "weight": 1.15 },
-        { "questionId": "q39", "expected": "disagree", "weight": 1.2 }
+        {
+          "questionId": "q20",
+          "expected": "disagree",
+          "weight": 1.2
+        },
+        {
+          "questionId": "q34",
+          "expected": "agree",
+          "weight": 1.15
+        },
+        {
+          "questionId": "q39",
+          "expected": "disagree",
+          "weight": 1.2
+        }
       ]
     }
   },
@@ -675,11 +1420,19 @@
     "series": "败犬女主太多了！",
     "image": "/images/characters/八奈见杏菜.png",
     "matchCode": "ESFJ",
-    "matchCodeFlex": ["ENFP", "ESFP"],
+    "matchCodeFlex": [
+      "ENFP",
+      "ESFP"
+    ],
     "code": "ANNA",
     "title": "人气败犬·能吃能聊还能硬撑体面",
     "archetypeId": "luminous-lead",
-    "tags": ["幼驯染败犬位", "班级人气王", "食欲深不见底", "天然翻车预备役"],
+    "tags": [
+      "幼驯染败犬位",
+      "班级人气王",
+      "食欲深不见底",
+      "天然翻车预备役"
+    ],
     "note": "你表面像那种随时都能把气氛带热的班级门面，实际上恋爱战绩已经被系统提前判负。能吃、能聊、能把难受先咽下去，嘴上还要装得像没事一样。属于“越是看起来活泼，越容易在夜里偷偷掉线”的类型。",
     "vector": {
       "expression": 3,
@@ -703,11 +1456,19 @@
     "series": "败犬女主太多了！",
     "image": "/images/characters/温水佳树.png",
     "matchCode": "ISFJ",
-    "matchCodeFlex": ["ISTJ", "ESFJ"],
+    "matchCodeFlex": [
+      "ISTJ",
+      "ESFJ"
+    ],
     "code": "KAJU",
     "title": "完美妹妹·兄控保护程序常驻后台",
     "archetypeId": "moonlit-guardian",
-    "tags": ["全能妹妹", "哥哥优先级最高", "平时稳得像系统服务", "一提兄长立刻过热"],
+    "tags": [
+      "全能妹妹",
+      "哥哥优先级最高",
+      "平时稳得像系统服务",
+      "一提兄长立刻过热"
+    ],
     "note": "你平时像那种已经把生活流程全部优化完毕的高性能妹妹模板，学习、家务、待人接物都像出厂校准过。但只要话题切到哥哥，整个人的情绪管理模块就会瞬间超频。属于“平时是完美UI，核心线程其实全绑在一个人身上”的类型。",
     "vector": {
       "expression": 0,
@@ -731,15 +1492,34 @@
     "series": "崩坏3",
     "image": "/images/characters/爱莉希雅.png",
     "matchCode": "ENFJ",
-    "matchCodeFlex": ["ESFJ", "ENFP"],
+    "matchCodeFlex": [
+      "ESFJ",
+      "ENFP"
+    ],
     "code": "ELYS",
     "title": "无瑕的粉色妖精小姐♪",
     "archetypeId": "luminous-lead",
-    "tags": ["社交悍匪天花板", "粉色滤镜本体", "如飞花般绚丽", "爱门"],
+    "tags": [
+      "社交悍匪天花板",
+      "粉色滤镜本体",
+      "如飞花般绚丽",
+      "爱门"
+    ],
     "note": "表面上是个喜欢贴贴、满嘴甜言蜜语的粉色社牛，实际上把「爱所有人」当成了一生贯彻的信仰。她不是没有悲伤，只是选择把最绚丽无瑕的笑容留给世界——属于那种「一出场就自带粉色聚光灯」的神。建议备好纸巾，笑着笑着就让人破防了。",
-    "vector": { "expression": 3, "temperature": 3, "judgement": 1, "order": 0, "agency": 2, "aura": 3 },
+    "vector": {
+      "expression": 3,
+      "temperature": 3,
+      "judgement": 1,
+      "order": 0,
+      "agency": 2,
+      "aura": 3
+    },
     "signature": {
-      "uniqueAxes": { "expression": 3, "temperature": 3, "aura": 3 }
+      "uniqueAxes": {
+        "expression": 3,
+        "temperature": 3,
+        "aura": 3
+      }
     }
   },
   {
@@ -748,15 +1528,34 @@
     "series": "名侦探柯南",
     "image": "/images/characters/灰原哀.png",
     "matchCode": "INTJ",
-    "matchCodeFlex": ["INTP", "ISTJ"],
+    "matchCodeFlex": [
+      "INTP",
+      "ISTJ"
+    ],
     "code": "HAIB",
     "title": "A药之母·科学界冷面吐槽役",
     "archetypeId": "icebound-observer",
-    "tags": ["死神小学生的刹车片", "毒舌女王", "APTX4869发明家", "外冷内热体质"],
+    "tags": [
+      "死神小学生的刹车片",
+      "毒舌女王",
+      "APTX4869发明家",
+      "外冷内热体质"
+    ],
     "note": "你以为她是冷血无情的科学家，其实她是全剧最清醒的吐槽担当。日常工作除了研究解药，就是用冰冷的语言给某位死神小学生踩刹车。她的冷幽默就像她发明的药一样致命——属于「不开口则已，一开口刀刀暴击」的典范。",
-    "vector": { "expression": -2, "temperature": -1, "judgement": 3, "order": 2, "agency": 1, "aura": 2 },
+    "vector": {
+      "expression": -2,
+      "temperature": -1,
+      "judgement": 3,
+      "order": 2,
+      "agency": 1,
+      "aura": 2
+    },
     "signature": {
-      "uniqueAxes": { "expression": -2, "judgement": 3, "temperature": -1 }
+      "uniqueAxes": {
+        "expression": -2,
+        "judgement": 3,
+        "temperature": -1
+      }
     }
   },
   {
@@ -765,15 +1564,34 @@
     "series": "我推的孩子",
     "image": "/images/characters/有马加奈.png",
     "matchCode": "ENTJ",
-    "matchCodeFlex": ["ESTJ", "ENFP"],
+    "matchCodeFlex": [
+      "ESTJ",
+      "ENFP"
+    ],
     "code": "KANA",
     "title": "舔小苏打的天才童星·究极帽子架",
     "archetypeId": "oathbound-captain",
-    "tags": ["傲娇退环境受害者", "十秒落泪", "帽子架本体", "重女潜质"],
+    "tags": [
+      "傲娇退环境受害者",
+      "十秒落泪",
+      "帽子架本体",
+      "重女潜质"
+    ],
     "note": "嘴上总是说着最刻薄的话，心里却比谁都渴望被注视。作为「十秒就能哭出来」的前天才童星，她把所有的自卑和不甘都化作了舞台上的胜负欲。其实只要你稍微多夸她两句，她的好感度就会像火箭一样窜上天——属于典型的「只要你推我，我就能为你闪闪发光」的究极傲娇。",
-    "vector": { "expression": 2, "temperature": 1, "judgement": 2, "order": 1, "agency": 2, "aura": 2 },
+    "vector": {
+      "expression": 2,
+      "temperature": 1,
+      "judgement": 2,
+      "order": 1,
+      "agency": 2,
+      "aura": 2
+    },
     "signature": {
-      "uniqueAxes": { "expression": 2, "judgement": 2, "agency": 2 }
+      "uniqueAxes": {
+        "expression": 2,
+        "judgement": 2,
+        "agency": 2
+      }
     }
   },
   {
@@ -782,15 +1600,34 @@
     "series": "莉可丽丝",
     "image": "/images/characters/锦木千束.png",
     "matchCode": "ENFP",
-    "matchCodeFlex": ["ESFP", "ENTP"],
+    "matchCodeFlex": [
+      "ESFP",
+      "ENTP"
+    ],
     "code": "CHIS",
     "title": "人形自走外挂·不杀的Lycoris",
     "archetypeId": "luminous-lead",
-    "tags": ["肉身躲子弹", "非致命性贴贴", "阳光开朗大女孩", "生命倒计时中的狂欢"],
+    "tags": [
+      "肉身躲子弹",
+      "非致命性贴贴",
+      "阳光开朗大女孩",
+      "生命倒计时中的狂欢"
+    ],
     "note": "你以为她只是个成天乐呵呵、喜欢到处贴贴的咖啡店看板娘，实际上她是能在枪林弹雨里跳舞的顶级特工。她最大的魅力在于，哪怕背负着沉重的宿命，依然选择用最明媚的笑容和橡胶弹去拥抱世界。和她在一起，你的生活绝对不会有无聊两个字，只有脱轨和狂飙。",
-    "vector": { "expression": 3, "temperature": 3, "judgement": 0, "order": -2, "agency": 3, "aura": 3 },
+    "vector": {
+      "expression": 3,
+      "temperature": 3,
+      "judgement": 0,
+      "order": -2,
+      "agency": 3,
+      "aura": 3
+    },
     "signature": {
-      "uniqueAxes": { "expression": 3, "temperature": 3, "aura": 3 }
+      "uniqueAxes": {
+        "expression": 3,
+        "temperature": 3,
+        "aura": 3
+      }
     }
   },
   {
@@ -799,15 +1636,34 @@
     "series": "天使☆骚动 RE-BOOT!",
     "image": "/images/characters/天音.png",
     "matchCode": "INTP",
-    "matchCodeFlex": ["INFP", "ISTP"],
+    "matchCodeFlex": [
+      "INFP",
+      "ISTP"
+    ],
     "code": "AMNE",
     "title": "重度网瘾·赛博冲浪达人",
     "archetypeId": "moonlit-guardian",
-    "tags": ["VTuber单推人", "线上话痨线下哑巴", "互联网冲浪圣体", "见光死废柴"],
+    "tags": [
+      "VTuber单推人",
+      "线上话痨线下哑巴",
+      "互联网冲浪圣体",
+      "见光死废柴"
+    ],
     "note": "在网络世界里，她是无所不知、满嘴抽象热词的冲浪巨佬；在现实中，她是个离开电脑就会迅速枯萎的社恐废柴。她的社交能量全靠看直播发弹幕来维持，如果你试图把她从房间里拖出去，她可能会当场融化。属于「电子海胆」的究极进化形态。",
-    "vector": { "expression": -2, "temperature": 0, "judgement": 1, "order": -2, "agency": -1, "aura": 1 },
+    "vector": {
+      "expression": -2,
+      "temperature": 0,
+      "judgement": 1,
+      "order": -2,
+      "agency": -1,
+      "aura": 1
+    },
     "signature": {
-      "uniqueAxes": { "expression": -2, "order": -2, "agency": -1 }
+      "uniqueAxes": {
+        "expression": -2,
+        "order": -2,
+        "agency": -1
+      }
     }
   }
 ]
