@@ -178,6 +178,42 @@ const characterNameI18n: Record<string, LocalizedText> = {
     en: 'Yachiyo Tsukimi',
     ja: '月見八千代',
   },
+  murasame: {
+    'zh-CN': '丛雨',
+    'zh-TW': '叢雨',
+    en: 'Murasame',
+    ja: 'ムラサメ',
+  },
+  'ayachi-nene': {
+    'zh-CN': '绫地宁宁',
+    'zh-TW': '綾地寧寧',
+    en: 'Nene Ayachi',
+    ja: '綾地寧々',
+  },
+  'tomotake-yoshino': {
+    'zh-CN': '朝武芳乃',
+    'zh-TW': '朝武芳乃',
+    en: 'Yoshino Tomotake',
+    ja: '朝武芳乃',
+  },
+  atri: {
+    'zh-CN': '亚托莉',
+    'zh-TW': '亞托莉',
+    en: 'ATRI',
+    ja: 'アトリ',
+  },
+  'yanami-anna': {
+    'zh-CN': '八奈见杏菜',
+    'zh-TW': '八奈見杏菜',
+    en: 'Anna Yanami',
+    ja: '八奈見杏菜',
+  },
+  'nukumizu-kaju': {
+    'zh-CN': '温水佳树',
+    'zh-TW': '溫水佳樹',
+    en: 'Kaju Nukumizu',
+    ja: '温水佳樹',
+  },
 }
 
 const seriesI18n: Record<string, LocalizedText> = {
@@ -270,6 +306,30 @@ const seriesI18n: Record<string, LocalizedText> = {
     'zh-TW': '超時空輝夜姬！',
     en: 'Cho-Kaguyahime!',
     ja: '超かぐや姫！',
+  },
+  '千恋＊万花': {
+    'zh-CN': '千恋＊万花',
+    'zh-TW': '千戀＊萬花',
+    en: 'Senren * Banka',
+    ja: '千恋＊万花',
+  },
+  '魔女的夜宴': {
+    'zh-CN': '魔女的夜宴',
+    'zh-TW': '魔女的夜宴',
+    en: 'Sabbat of the Witch',
+    ja: 'サノバウィッチ',
+  },
+  'ATRI -My Dear Moments-': {
+    'zh-CN': 'ATRI -My Dear Moments-',
+    'zh-TW': 'ATRI -My Dear Moments-',
+    en: 'ATRI -My Dear Moments-',
+    ja: 'ATRI -My Dear Moments-',
+  },
+  '败犬女主太多了！': {
+    'zh-CN': '败犬女主太多了！',
+    'zh-TW': '敗犬女主太多了！',
+    en: 'Too Many Losing Heroines!',
+    ja: '負けヒロインが多すぎる！',
   },
 }
 

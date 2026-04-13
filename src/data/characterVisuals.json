@@ -114,5 +114,29 @@
 	"runami-yachiyo": {
 		"image": "/images/characters/八千代.png",
 		"accent": "#d88fd8"
+	},
+	"murasame": {
+		"image": "/images/characters/丛雨.png",
+		"accent": "#86c166"
+	},
+	"ayachi-nene": {
+		"image": "/images/characters/绫地宁宁.png",
+		"accent": "#e4a9ba"
+	},
+	"tomotake-yoshino": {
+		"image": "/images/characters/朝武芳乃.png",
+		"accent": "#d0104c"
+	},
+	"atri": {
+		"image": "/images/characters/亚托莉.png",
+		"accent": "#e63f32"
+	},
+	"yanami-anna": {
+		"image": "/images/characters/八奈见杏菜.png",
+		"accent": "#4f86d9"
+	},
+	"nukumizu-kaju": {
+		"image": "/images/characters/温水佳树.png",
+		"accent": "#d8b65a"
 	}
 }
