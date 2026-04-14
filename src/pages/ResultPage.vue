@@ -150,11 +150,38 @@ const displayTags = computed(() => {
 const displayCode = computed(() => result.value?.code ?? result.value?.mbtiCode ?? '')
 const displayProbability = computed(() => formatCharacterProbability(result.value?.matchProbability ?? 0))
 const resultThemeColor = computed(() => primaryCharacter.value?.accent ?? result.value?.archetype.accent ?? '#e2ad3b')
+function hexToRgb(hex: string) {
+  const normalized = hex.replace('#', '')
+  const full = normalized.length === 3
+    ? normalized.split('').map((char) => char + char).join('')
+    : normalized
+
+  return {
+    r: parseInt(full.substring(0, 2), 16),
+    g: parseInt(full.substring(2, 4), 16),
+    b: parseInt(full.substring(4, 6), 16),
+  }
+}
+
+function mixRgb(base: { r: number; g: number; b: number }, target: { r: number; g: number; b: number }, weight: number) {
+  const ratio = Math.max(0, Math.min(1, weight))
+  return {
+    r: Math.round(base.r * (1 - ratio) + target.r * ratio),
+    g: Math.round(base.g * (1 - ratio) + target.g * ratio),
+    b: Math.round(base.b * (1 - ratio) + target.b * ratio),
+  }
+}
+
+function toRgbString(color: { r: number; g: number; b: number }, alpha?: number) {
+  if (alpha === undefined) {
+    return `rgb(${color.r}, ${color.g}, ${color.b})`
+  }
+
+  return `rgba(${color.r}, ${color.g}, ${color.b}, ${alpha})`
+}
+
 const exportBtnTextColor = computed(() => {
-  const hex = resultThemeColor.value.replace('#', '')
-  const r = parseInt(hex.substring(0, 2), 16)
-  const g = parseInt(hex.substring(2, 4), 16)
-  const b = parseInt(hex.substring(4, 6), 16)
+  const { r, g, b } = hexToRgb(resultThemeColor.value)
   // WCAG relative luminance
   const toLinear = (c: number) => {
     const s = c / 255
@@ -175,31 +202,48 @@ const rarityTierLabel = computed(() => {
     : '--'
 })
 const rarityTierStyle = computed(() => {
+  const base = hexToRgb(resultThemeColor.value)
+  const white = { r: 255, g: 255, b: 255 }
+  const dark = { r: 47, g: 58, b: 69 }
+
   switch (rarityMeta.value?.tier) {
-    case 'ur':
+    case 'ur': {
+      const text = mixRgb(base, dark, 0.22)
       return {
-        color: '#8f5a0a',
-        background: 'rgba(244, 194, 69, 0.22)',
-        borderColor: 'rgba(244, 194, 69, 0.42)',
+        color: toRgbString(text),
+        background: toRgbString(base, 0.28),
+        borderColor: toRgbString(base, 0.5),
+        boxShadow: `0 8px 18px ${toRgbString(base, 0.18)}`,
       }
-    case 'ssr':
+    }
+    case 'ssr': {
+      const text = mixRgb(base, dark, 0.3)
       return {
-        color: '#176b6b',
-        background: 'rgba(66, 152, 180, 0.18)',
-        borderColor: 'rgba(66, 152, 180, 0.36)',
+        color: toRgbString(text),
+        background: toRgbString(base, 0.18),
+        borderColor: toRgbString(base, 0.34),
+        boxShadow: `0 6px 14px ${toRgbString(base, 0.12)}`,
       }
-    case 'sr':
+    }
+    case 'sr': {
+      const text = mixRgb(base, dark, 0.4)
       return {
-        color: '#4b5f9c',
-        background: 'rgba(138, 96, 157, 0.16)',
-        borderColor: 'rgba(138, 96, 157, 0.34)',
+        color: toRgbString(text),
+        background: toRgbString(base, 0.1),
+        borderColor: toRgbString(base, 0.22),
+        boxShadow: 'none',
       }
-    default:
+    }
+    default: {
+      const muted = mixRgb(base, white, 0.72)
+      const text = mixRgb(base, dark, 0.52)
       return {
-        color: '#52606d',
-        background: 'rgba(148, 163, 184, 0.14)',
-        borderColor: 'rgba(148, 163, 184, 0.28)',
+        color: toRgbString(text),
+        background: toRgbString(muted, 0.32),
+        borderColor: toRgbString(base, 0.16),
+        boxShadow: 'none',
       }
+    }
   }
 })
 const rarityRankLabel = computed(() => {

@@ -20,6 +20,36 @@ defineExpose({
 
 const primaryCharacter = computed(() => props.result.characterMatches[0] ?? null)
 const resultThemeColor = computed(() => primaryCharacter.value?.accent ?? props.result.archetype.accent ?? '#e2ad3b')
+function hexToRgb(hex: string) {
+  const normalized = hex.replace('#', '')
+  const full = normalized.length === 3
+    ? normalized.split('').map((char) => char + char).join('')
+    : normalized
+
+  return {
+    r: parseInt(full.substring(0, 2), 16),
+    g: parseInt(full.substring(2, 4), 16),
+    b: parseInt(full.substring(4, 6), 16),
+  }
+}
+
+function mixRgb(base: { r: number; g: number; b: number }, target: { r: number; g: number; b: number }, weight: number) {
+  const ratio = Math.max(0, Math.min(1, weight))
+  return {
+    r: Math.round(base.r * (1 - ratio) + target.r * ratio),
+    g: Math.round(base.g * (1 - ratio) + target.g * ratio),
+    b: Math.round(base.b * (1 - ratio) + target.b * ratio),
+  }
+}
+
+function toRgbString(color: { r: number; g: number; b: number }, alpha?: number) {
+  if (alpha === undefined) {
+    return `rgb(${color.r}, ${color.g}, ${color.b})`
+  }
+
+  return `rgba(${color.r}, ${color.g}, ${color.b}, ${alpha})`
+}
+
 const rarityMeta = computed(() => getCharacterRarityMeta(primaryCharacter.value?.id))
 const rarityTierLabel = computed(() => {
   const tier = rarityMeta.value?.tier
@@ -28,31 +58,44 @@ const rarityTierLabel = computed(() => {
     : '--'
 })
 const rarityTierStyle = computed(() => {
+  const base = hexToRgb(resultThemeColor.value)
+  const white = { r: 255, g: 255, b: 255 }
+  const dark = { r: 47, g: 58, b: 69 }
+
   switch (rarityMeta.value?.tier) {
-    case 'ur':
+    case 'ur': {
+      const text = mixRgb(base, dark, 0.22)
       return {
-        color: '#8f5a0a',
-        background: 'rgba(244, 194, 69, 0.22)',
-        borderColor: 'rgba(244, 194, 69, 0.42)',
+        color: toRgbString(text),
+        background: toRgbString(base, 0.28),
+        borderColor: toRgbString(base, 0.5),
       }
-    case 'ssr':
+    }
+    case 'ssr': {
+      const text = mixRgb(base, dark, 0.3)
       return {
-        color: '#176b6b',
-        background: 'rgba(66, 152, 180, 0.18)',
-        borderColor: 'rgba(66, 152, 180, 0.36)',
+        color: toRgbString(text),
+        background: toRgbString(base, 0.18),
+        borderColor: toRgbString(base, 0.34),
       }
-    case 'sr':
+    }
+    case 'sr': {
+      const text = mixRgb(base, dark, 0.4)
       return {
-        color: '#4b5f9c',
-        background: 'rgba(138, 96, 157, 0.16)',
-        borderColor: 'rgba(138, 96, 157, 0.34)',
+        color: toRgbString(text),
+        background: toRgbString(base, 0.1),
+        borderColor: toRgbString(base, 0.22),
       }
-    default:
+    }
+    default: {
+      const muted = mixRgb(base, white, 0.72)
+      const text = mixRgb(base, dark, 0.52)
       return {
-        color: '#52606d',
-        background: 'rgba(148, 163, 184, 0.14)',
-        borderColor: 'rgba(148, 163, 184, 0.28)',
+        color: toRgbString(text),
+        background: toRgbString(muted, 0.32),
+        borderColor: toRgbString(base, 0.16),
       }
+    }
   }
 })
 const raritySummaryLabel = computed(() => {
