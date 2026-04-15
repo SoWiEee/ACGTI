@@ -689,6 +689,7 @@ select {
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  align-items: start;
   gap: 40px;
   margin-bottom: 40px;
 }
@@ -722,6 +723,96 @@ select {
   color: #6f7d88;
   font-size: 0.95rem;
   line-height: 1.65;
+}
+
+.author-social-section {
+  width: min(100%, 300px);
+  justify-self: end;
+}
+
+.author-social-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.author-social-link {
+  --social-accent: #3ba17c;
+  --social-bg: #eef4f1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  min-height: 88px;
+  padding: 12px;
+  border: 1px solid #dbe2e7;
+  border-radius: 16px;
+  background: #fff;
+  color: #3f4b54;
+  text-decoration: none;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.author-social-link:hover {
+  border-color: color-mix(in srgb, var(--social-accent) 42%, #dbe2e7);
+  color: color-mix(in srgb, var(--social-accent) 88%, #1d2730);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--social-accent) 16%, transparent);
+}
+
+.author-social-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--social-bg);
+  color: var(--social-accent);
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.author-social-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.author-social-label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+
+.author-social-link:hover .author-social-icon {
+  transform: scale(1.04);
+}
+
+.author-social-link[data-brand='xiaoheihe'] {
+  --social-accent: #14191e;
+  --social-bg: #f0f2f5;
+}
+
+.author-social-link[data-brand='bilibili'] {
+  --social-accent: #00a1d6;
+  --social-bg: #eef9ff;
+}
+
+.author-social-link[data-brand='xiaohongshu'] {
+  --social-accent: #ff2442;
+  --social-bg: #fff0f3;
+}
+
+.author-social-link[data-brand='github'] {
+  --social-accent: #181717;
+  --social-bg: #f2f3f5;
 }
 
 .footer-bottom {
@@ -961,9 +1052,24 @@ select {
     flex-direction: column;
     text-align: center;
   }
+
+  .author-social-link {
+    width: 100%;
+    min-height: 82px;
+  }
+
+  .author-social-section {
+    width: 100%;
+    max-width: none;
+    justify-self: stretch;
+  }
 }
 
 @media (max-width: 480px) {
+  .author-social-list {
+    grid-template-columns: 1fr;
+  }
+
   .footer-content {
     grid-template-columns: 1fr;
   }
@@ -1034,15 +1140,11 @@ select {
 }
 
 
-button, .btn, .button-primary, .hero-button, .submit-btn, .nav-cta, .character
--card {
-  transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.2
-5s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.25s ease, opacity 0.25
-s ease ;
+button, .btn, .button-primary, .hero-button, .submit-btn, .nav-cta, .character-card {
+  transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.25s ease, opacity 0.25s ease;
 }
 
-button:hover, .btn:hover, .button-primary:hover, .hero-button:hover, .submit-b
-tn:hover, .nav-cta:hover, .character-card:hover {
+button:hover, .btn:hover, .button-primary:hover, .hero-button:hover, .submit-btn:hover, .nav-cta:hover, .character-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }

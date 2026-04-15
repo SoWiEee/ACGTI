@@ -60,9 +60,9 @@ const VECTOR_AXES: DimensionId[] = ['expression', 'temperature', 'judgement', 'o
 const ARCHETYPE_IDS = Object.values(ROLE_TO_ARCHETYPE)
 
 const MBTI_WEIGHT = 0.25
-const ARCHETYPE_WEIGHT = 0.35
-const VECTOR_WEIGHT = 0.3
-const CHARACTER_SPECIFIC_WEIGHT = 0.1
+const ARCHETYPE_WEIGHT = 0.28
+const VECTOR_WEIGHT = 0.27
+const CHARACTER_SPECIFIC_WEIGHT = 0.2
 const CLOSE_MATCH_THRESHOLD = 0.025
 
 // 16personalities 风格的维度标签配置
@@ -366,6 +366,11 @@ type RankedCharacter = {
   specific: number
 }
 
+export interface CharacterProbabilityWeight {
+  characterId: string
+  weight: number
+}
+
 function rankCharactersByProfile({
   scores,
   characters,
@@ -424,6 +429,58 @@ function rankCharactersByProfile({
 
       return left.character.name.localeCompare(right.character.name, 'zh-Hans-CN')
     })
+}
+
+export function calculateCharacterProbabilityWeights({
+  answers,
+  questions,
+  archetypes,
+  characters,
+  sharpness = 120,
+}: {
+  answers: number[]
+  questions: Question[]
+  archetypes: Archetype[]
+  characters: CharacterMatch[]
+  sharpness?: number
+}): CharacterProbabilityWeight[] {
+  const answerProfile = buildAnswerProfile({
+    answers,
+    questions,
+    archetypes,
+  })
+
+  const rankings = rankCharactersByProfile({
+    scores: answerProfile.scores,
+    characters,
+    archetypeRaw: answerProfile.archetypeRaw,
+    userVector: answerProfile.userVector,
+    answers,
+  })
+
+  if (!rankings.length) {
+    return []
+  }
+
+  const maxTotal = Math.max(...rankings.map((item) => item.total))
+  const weighted = rankings.map((item) => ({
+    characterId: item.character.id,
+    // 使用相对分数做 softmax，保留“接近命中”的展示权重，同时避免极低频角色长期为 0。
+    weight: Math.exp((item.total - maxTotal) * sharpness),
+  }))
+
+  const totalWeight = weighted.reduce((sum, item) => sum + item.weight, 0)
+  if (totalWeight <= 0) {
+    return weighted.map((item) => ({
+      characterId: item.characterId,
+      weight: 1 / weighted.length,
+    }))
+  }
+
+  return weighted.map((item) => ({
+    characterId: item.characterId,
+    weight: item.weight / totalWeight,
+  }))
 }
 
 function scoreMbti(
@@ -508,7 +565,9 @@ function scoreUniqueAxes(
     const actual = userVector[axis]
     const axisWeight = Math.max(0.5, Math.abs(expected))
     const distance = Math.abs(actual - expected)
-    const similarity = Math.max(0, 1 - distance / 18)
+    // 角色签名轴需要更强的辨识度，否则极端画像会被相邻的泛型角色长期压住。
+    const normalizedDistance = Math.min(1, distance / 6)
+    const similarity = Math.max(0, 1 - normalizedDistance)
     weightedScore += similarity * axisWeight
     weightTotal += axisWeight
   }
