@@ -437,6 +437,16 @@ function viewMatchedCharacter(characterId: string) {
               <AppIcon name="copy" />
               {{ t('result.copy') }}
             </button>
+            <button
+              class="action-btn hero-export-btn"
+              :disabled="share.isExporting.value"
+              :style="{ backgroundColor: resultThemeColor, color: exportBtnTextColor }"
+              @click="exportPosterImage"
+            >
+              <AppIcon name="spinner" v-if="share.isExporting.value" style="animation: spin 1s linear infinite" />
+              <AppIcon name="download" v-else />
+              {{ share.isExporting.value ? t('common.generating', undefined, '生成中...') : t('common.saveImage', undefined, '生成并分享次元身份卡') }}
+            </button>
             <a href="https://github.com/tianxingleo/ACGTI" target="_blank" rel="noopener noreferrer" class="action-btn" style="background: rgba(255, 255, 255, 0.2); color: white; text-decoration: none; border: none;">
               <svg style="width: 18px; height: 18px;" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
               GitHub Star
@@ -607,15 +617,6 @@ function viewMatchedCharacter(characterId: string) {
             </RouterLink>
           </div>
         </section>
-
-        <div style="margin-top: 40px; display: flex; flex-direction: column; align-items: center; gap: 16px;">
-  <button @click="exportPosterImage" :disabled="share.isExporting.value" class="export-image-btn" :style="{ backgroundColor: resultThemeColor, color: exportBtnTextColor }">
-    <AppIcon name="spinner" v-if="share.isExporting.value" style="animation: spin 1s linear infinite" />
-    <AppIcon name="download" v-else />
-    <span style="letter-spacing: 0.05em">{{ share.isExporting.value ? t('common.generating', undefined, '生成中...') : t('common.saveImage', undefined, '生成并分享次元身份卡') }}</span>
-  </button>
-  <p v-if="share.feedback.value" class="export-feedback">{{ share.feedback.value }}</p>
-</div>
 
 <div class="poster-capture-wrapper">
   <SharePosterAsync v-if="shouldMountPoster" ref="posterRef" :result="result" />
@@ -897,10 +898,20 @@ function viewMatchedCharacter(characterId: string) {
   cursor: pointer;
 }
 
+.action-btn:disabled {
+  opacity: 0.72;
+  cursor: not-allowed;
+}
+
 .action-btn.light {
   background: #fff;
   border-color: #fff;
   color: #2f3a45;
+}
+
+.hero-export-btn {
+  border-color: transparent;
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.18);
 }
 
 .action-btn.ghost {
@@ -2015,37 +2026,6 @@ function viewMatchedCharacter(characterId: string) {
   }
 }
 
-.export-image-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border: none;
-  border-radius: 999px;
-  padding: 16px 36px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s, box-shadow 0.2s;
-  width: 100%;
-  max-width: 360px;
-}
-.export-image-btn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-  transform: none;
-}
-.export-image-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
-}
-.export-feedback {
-  margin: 0;
-  font-size: 14px;
-  color: #3ba17c;
-  font-weight: 600;
-}
 @keyframes spin {
   100% { transform: rotate(360deg); }
 }
