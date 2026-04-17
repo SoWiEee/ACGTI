@@ -789,6 +789,7 @@ function viewMatchedCharacter(characterId: string) {
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
 .hero-badge-wrap {
@@ -864,6 +865,7 @@ function viewMatchedCharacter(characterId: string) {
   font-weight: 800;
   letter-spacing: 0.04em;
   box-shadow: var(--hero-pill-shadow);
+  white-space: nowrap;
 }
 
 .hero-metric small {
@@ -1516,6 +1518,7 @@ function viewMatchedCharacter(characterId: string) {
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .profile-card h3 {
@@ -1528,6 +1531,7 @@ function viewMatchedCharacter(characterId: string) {
   color: #e4ae3a;
   font-size: 24px;
   font-weight: 800;
+  white-space: nowrap;
 }
 
 .profile-hidden-flag {
@@ -1537,6 +1541,7 @@ function viewMatchedCharacter(characterId: string) {
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .profile-rarity {
@@ -1554,6 +1559,7 @@ function viewMatchedCharacter(characterId: string) {
   color: #5f6b75;
   font-size: 14px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .nav-card {
