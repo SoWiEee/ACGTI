@@ -132,6 +132,28 @@ const displayTags = computed(() => {
 const displayCode = computed(() => result.value?.code ?? result.value?.mbtiCode ?? '')
 const displayProbability = computed(() => formatCharacterProbability(result.value?.matchProbability ?? 0))
 const resultThemeColor = computed(() => primaryCharacter.value?.accent ?? result.value?.archetype.accent ?? '#e2ad3b')
+const creatorLinks = computed(() => ([
+  {
+    id: 'xiaohongshu',
+    label: t('result.creatorLinks.items.xiaohongshu'),
+    href: 'http://xhslink.com/o/23CXgQXWL85',
+  },
+  {
+    id: 'threads',
+    label: t('result.creatorLinks.items.threads'),
+    href: 'https://www.threads.com/@tmxk39/post/DXMWAolETft?xmt=AQF0FQvz-R6ZtizfBRGlitwi5hRbV72jUSAnRctBOuPsF-Fm-nhZfUmRdPB4F-LBtxQb80AY&slof=1',
+  },
+  {
+    id: 'douyin',
+    label: t('result.creatorLinks.items.douyin'),
+    href: 'https://v.douyin.com/SCrImBFJouI/',
+  },
+  {
+    id: 'bilibili',
+    label: t('result.creatorLinks.items.bilibili'),
+    href: 'https://b23.tv/rdaQkwA',
+  },
+]))
 function hexToRgb(hex: string) {
   const normalized = hex.replace('#', '')
   const full = normalized.length === 3
@@ -606,6 +628,24 @@ function viewMatchedCharacter(characterId: string) {
           <p class="relay-copy">{{ t('result.relayCopy') }}</p>
           <div class="relay-divider"></div>
           <p class="relay-hint">{{ t('result.relayHint') }}</p>
+        </div>
+
+        <div class="sidebar-card creator-card">
+          <p class="small-title">{{ t('result.creatorLinks.title') }}</p>
+          <p class="creator-copy">{{ t('result.creatorLinks.copy') }}</p>
+          <div class="creator-links">
+            <a
+              v-for="item in creatorLinks"
+              :key="item.id"
+              :href="item.href"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="creator-link"
+            >
+              <span class="creator-link-label">{{ item.label }}</span>
+              <span class="creator-link-action">{{ t('result.creatorLinks.action') }}</span>
+            </a>
+          </div>
         </div>
 
         <div class="sidebar-card project-card">
@@ -1539,6 +1579,56 @@ function viewMatchedCharacter(characterId: string) {
   line-height: 1.5;
   color: #33a474;
   font-weight: 700;
+}
+
+.creator-card {
+  background: linear-gradient(180deg, #ffffff, #f6fbf8);
+  border-color: #dde8e2;
+}
+
+.creator-copy {
+  margin: 10px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #5f6b75;
+}
+
+.creator-links {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.creator-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid #dce7e0;
+  border-radius: 16px;
+  background: #ffffff;
+  color: #2f3a45;
+  text-decoration: none;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.creator-link:hover {
+  border-color: #b9d7c7;
+  box-shadow: 0 12px 24px rgba(51, 164, 116, 0.08);
+  transform: translateY(-1px);
+}
+
+.creator-link-label {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.creator-link-action {
+  color: #33a474;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .sidebar-export-btn {
