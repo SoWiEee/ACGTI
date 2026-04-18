@@ -475,9 +475,19 @@ function viewMatchedCharacter(characterId: string) {
 // ── 统计上报：结果确定后 fire-and-forget 上报 ──
 
 function buildSubmitPayload() {
-  if (!result.value) return null
+  if (!result.value) {
+    console.error('❌ buildSubmitPayload: result.value is null')
+    return null
+  }
   const r = result.value
   const scores = r.scores
+
+  console.log('📋 Result object:', {
+    code: r.code,
+    mbtiCode: r.mbtiCode,
+    archetypeId: r.archetype.id,
+    scoresKeys: Object.keys(scores),
+  })
 
   // 每次构建 payload 时生成全新的 UUID，确保重复提交（即使是返回修改数据后再次提交）也能被记录
   const submissionId = crypto.randomUUID()
@@ -497,7 +507,7 @@ function buildSubmitPayload() {
     }
   }
 
-  return {
+  const payload = {
     submissionId: submissionId,
     archetypeCode: r.archetype.id,
     characterCode: r.code || r.mbtiCode,
@@ -516,6 +526,16 @@ function buildSubmitPayload() {
       : undefined,
     durationMs,
   }
+
+  console.log('✅ Payload validation:', {
+    submissionIdValid: /^[0-9a-f-]+$/.test(payload.submissionId),
+    archetypeCodeValid: /^[A-Za-z0-9_-]{1,32}$/.test(payload.archetypeCode),
+    characterCodeValid: /^[A-Za-z0-9_-]{1,32}$/.test(payload.characterCode),
+    durationMsValid: payload.durationMs >= 1000 && payload.durationMs <= 3600000,
+    dimensionScoresValid: Object.values(payload.dimensionScores).every(v => typeof v === 'number' && v >= 0 && v <= 100),
+  })
+
+  return payload
 }
 
 // ── 用户反馈 ──
