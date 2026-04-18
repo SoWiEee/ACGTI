@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, defineAsyncComponent, onMounted, ref, watch } from 'vue'
+import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import AdsenseSlot from '../components/AdsenseSlot.vue'
@@ -13,6 +13,51 @@ import { getCharacterRarityMeta } from '../utils/characterRarity'
 import { formatCharacterProbability } from '../utils/characterProbability'
 import { normalizeMbtiCode } from '../utils/quizEngine'
 import { reportResultInBackground, submitFeedback } from '../utils/statsReporter'
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (container: HTMLElement | string, options: Record<string, unknown>) => number
+      reset: (widgetId?: number) => void
+      remove?: (widgetId: number) => void
+    }
+  }
+}
+
+let turnstileScriptPromise: Promise<void> | null = null
+
+function ensureTurnstileScript() {
+  if (typeof window === 'undefined') {
+    return Promise.reject(new Error('Turnstile is not available during SSR'))
+  }
+
+  if (window.turnstile) {
+    return Promise.resolve()
+  }
+
+  if (!turnstileScriptPromise) {
+    turnstileScriptPromise = new Promise<void>((resolve, reject) => {
+      const existing = document.querySelector<HTMLScriptElement>('script[data-turnstile-script="true"]')
+
+      if (existing) {
+        existing.addEventListener('load', () => resolve(), { once: true })
+        existing.addEventListener('error', () => reject(new Error('Failed to load Turnstile script')), { once: true })
+        return
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'
+      script.async = true
+      script.defer = true
+      script.dataset.turnstileScript = 'true'
+      script.onload = () => resolve()
+      script.onerror = () => reject(new Error('Failed to load Turnstile script'))
+      document.head.appendChild(script)
+    })
+  }
+
+  return turnstileScriptPromise
+}
 
 // SharePoster 只在用户点击"导出图片"时才加载和挂载
 const SharePosterAsync = defineAsyncComponent(() => import('../components/SharePoster.vue'))
@@ -60,8 +105,9 @@ onMounted(async () => {
     return
   }
 
+  void mountTurnstileWidget()
+
   // 后台静默上报（fire-and-forget）
-  submissionId.value = crypto.randomUUID()
   const payload = buildSubmitPayload()
   if (payload) {
     reportResultInBackground(payload)
@@ -427,27 +473,40 @@ function viewMatchedCharacter(characterId: string) {
 }
 
 // ── 统计上报：结果确定后 fire-and-forget 上报 ──
-const submissionId = ref<string>('')
 
 function buildSubmitPayload() {
   if (!result.value) return null
   const r = result.value
   const scores = r.scores
 
+  // 每次构建 payload 时生成全新的 UUID，确保重复提交（即使是返回修改数据后再次提交）也能被记录
+  const submissionId = crypto.randomUUID()
+
   // 从 localStorage 拿 answers（useQuiz state 里存的）
   const record = quiz.state.latestRecord
   const rawAnswers = record?.answers ?? []
+  
+  let durationMs = 30000 // 默认值 30 秒
+  if (record?.startedAt && record?.createdAt) {
+    const start = new Date(record.startedAt).getTime()
+    const end = new Date(record.createdAt).getTime()
+    const calculated = end - start
+    // 确保在后端接受的范围内：1000-3600000 ms
+    if (calculated >= 1000 && calculated <= 3600000) {
+      durationMs = calculated
+    }
+  }
 
   return {
-    submissionId: submissionId.value,
+    submissionId: submissionId,
     archetypeCode: r.archetype.id,
     characterCode: r.code || r.mbtiCode,
     predictedMbti: r.mbtiCode || undefined,
     dimensionScores: {
-      ei: scores.E_I?.percentage ?? null,
-      sn: scores.S_N?.percentage ?? null,
-      tf: scores.T_F?.percentage ?? null,
-      jp: scores.J_P?.percentage ?? null,
+      ei: scores.E_I?.percentage ?? 50,
+      sn: scores.S_N?.percentage ?? 50,
+      tf: scores.T_F?.percentage ?? 50,
+      jp: scores.J_P?.percentage ?? 50,
     },
     answers: rawAnswers.length > 0
       ? rawAnswers.map((val: number, idx: number) => ({
@@ -455,7 +514,7 @@ function buildSubmitPayload() {
           answerValue: val,
         }))
       : undefined,
-    durationMs: undefined,
+    durationMs,
   }
 }
 
@@ -469,32 +528,135 @@ const feedbackNote = ref('')
 const feedbackSubmitting = ref(false)
 const feedbackDone = ref(false)
 const feedbackError = ref('')
+const turnstileContainer = ref<HTMLElement | null>(null)
+const turnstileToken = ref('')
+const turnstileWidgetId = ref<number | null>(null)
+const turnstileStatus = ref<'idle' | 'loading' | 'ready' | 'verified' | 'error'>('idle')
+const turnstileSiteKey = String(import.meta.env.VITE_TURNSTILE_SITE_KEY ?? '').trim()
 
+const hasTurnstile = computed(() => turnstileSiteKey.length > 0)
 const feedbackMbtiComplete = computed(() =>
   feedbackEi.value && feedbackSn.value && feedbackTf.value && feedbackJp.value
 )
 
+const turnstileHint = computed(() => {
+  if (!hasTurnstile.value) {
+    return t('result.turnstileLocalHint', undefined, '当前未配置 Turnstile，开发环境将自动跳过验证。')
+  }
+
+  if (turnstileStatus.value === 'loading') {
+    return t('result.turnstileLoading', undefined, '人机验证加载中...')
+  }
+
+  if (turnstileStatus.value === 'error') {
+    return t('result.turnstileErrorHint', undefined, '验证组件加载失败，请刷新重试。')
+  }
+
+  if (!turnstileToken.value) {
+    return t('result.turnstilePrompt', undefined, '提交前请先完成人机验证。')
+  }
+
+  return t('result.turnstileVerified', undefined, '验证已通过。')
+})
+
+const feedbackCanSubmit = computed(() =>
+  !!feedbackMbtiComplete.value && feedbackConfidence.value > 0 && !feedbackSubmitting.value && (!hasTurnstile.value || !!turnstileToken.value)
+)
+
+async function mountTurnstileWidget() {
+  if (!hasTurnstile.value || typeof window === 'undefined') {
+    return
+  }
+
+  turnstileStatus.value = 'loading'
+
+  try {
+    await ensureTurnstileScript()
+
+    if (!turnstileContainer.value || !window.turnstile) {
+      turnstileStatus.value = 'error'
+      return
+    }
+
+    if (turnstileWidgetId.value !== null && window.turnstile.remove) {
+      window.turnstile.remove(turnstileWidgetId.value)
+    }
+
+    turnstileWidgetId.value = window.turnstile.render(turnstileContainer.value, {
+      sitekey: turnstileSiteKey,
+      theme: 'light',
+      callback: (token: string) => {
+        turnstileToken.value = token
+        turnstileStatus.value = 'verified'
+        feedbackError.value = ''
+      },
+      'expired-callback': () => {
+        turnstileToken.value = ''
+        turnstileStatus.value = 'ready'
+      },
+      'error-callback': () => {
+        turnstileToken.value = ''
+        turnstileStatus.value = 'error'
+      },
+    })
+
+    turnstileStatus.value = 'ready'
+  } catch (error) {
+    console.error('Turnstile render error:', error)
+    turnstileStatus.value = 'error'
+  }
+}
+
+function resetTurnstileWidget() {
+  turnstileToken.value = ''
+
+  if (typeof window === 'undefined' || turnstileWidgetId.value === null || !window.turnstile) {
+    return
+  }
+
+  window.turnstile.reset(turnstileWidgetId.value)
+  turnstileStatus.value = 'ready'
+}
+
 async function handleFeedbackSubmit() {
   if (!feedbackMbtiComplete.value) return
+  if (hasTurnstile.value && !turnstileToken.value) {
+    feedbackError.value = t('result.turnstileRequired', undefined, '请先完成人机验证后再提交。')
+    return
+  }
+
   feedbackSubmitting.value = true
   feedbackError.value = ''
 
   const selfMbti = feedbackEi.value + feedbackSn.value + feedbackTf.value + feedbackJp.value
 
   const ok = await submitFeedback({
-    submissionId: submissionId.value,
+    submissionId: crypto.randomUUID(),
     selfMbti,
     confidence: feedbackConfidence.value,
     note: feedbackNote.value || undefined,
+    turnstileToken: turnstileToken.value || undefined,
   })
 
   feedbackSubmitting.value = false
   if (ok) {
     feedbackDone.value = true
+    if (hasTurnstile.value) {
+      resetTurnstileWidget()
+    }
   } else {
+    if (hasTurnstile.value) {
+      resetTurnstileWidget()
+    }
     feedbackError.value = t('result.feedbackError', undefined, '提交失败，请稍后再试')
   }
 }
+
+onBeforeUnmount(() => {
+  if (typeof window !== 'undefined' && turnstileWidgetId.value !== null && window.turnstile?.remove) {
+    window.turnstile.remove(turnstileWidgetId.value)
+  }
+})
 </script>
 
 <template>
@@ -781,9 +943,15 @@ async function handleFeedbackSubmit() {
               />
             </div>
 
+            <div class="feedback-field turnstile-block">
+              <label class="feedback-label">{{ t('result.turnstileLabel', undefined, '人机验证') }}</label>
+              <div ref="turnstileContainer" class="turnstile-container"></div>
+              <p class="turnstile-hint" :class="{ 'turnstile-hint--error': turnstileStatus === 'error' }">{{ turnstileHint }}</p>
+            </div>
+
             <button
               class="feedback-submit-btn"
-              :disabled="!feedbackMbtiComplete || feedbackConfidence === 0 || feedbackSubmitting"
+              :disabled="!feedbackCanSubmit"
               @click="handleFeedbackSubmit"
             >
               {{ feedbackSubmitting ? t('result.feedbackSubmitting', undefined, '提交中...') : t('result.feedbackSubmit', undefined, '提交反馈') }}
@@ -2417,6 +2585,30 @@ async function handleFeedbackSubmit() {
 
 .feedback-input::placeholder {
   color: #b5bfc7;
+}
+
+.turnstile-block {
+  margin-bottom: 20px;
+}
+
+.turnstile-container {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 4px 0;
+}
+
+.turnstile-hint {
+  margin: 8px 0 0;
+  color: #8f9ba5;
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.turnstile-hint--error {
+  color: #e26666;
 }
 
 .feedback-submit-btn {

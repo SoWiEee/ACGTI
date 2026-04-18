@@ -25,6 +25,7 @@ export interface FeedbackPayload {
   confidence: number
   note?: string
   appVersion: string
+  turnstileToken?: string
 }
 
 /**

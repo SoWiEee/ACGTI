@@ -111,6 +111,7 @@ export interface DimensionScore {
 export interface QuizRecord {
   answers: number[]
   createdAt: string
+  startedAt?: string
   result: QuizResult
 }
 
