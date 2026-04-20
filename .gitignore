@@ -59,7 +59,13 @@ __pycache__/
 venv/
 
 # Local analysis outputs
-analysis/
+analysis/README.md
+analysis/backup/
+analysis/reports/
+analysis/*.db
+analysis/*.sqlite
+analysis/*.sqlite3
+analysis/*.csv
 
 # Misc assets / archives
 *.png
