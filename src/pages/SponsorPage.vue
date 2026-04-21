@@ -59,7 +59,7 @@ useSeo({
               <h3 class="method-name">{{ t('sponsor.wechat') }}</h3>
               <p class="method-desc">{{ t('sponsor.wechatDesc') }}</p>
               <div class="qr-placeholder">
-                <img :src="'https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/26_04_2cebfcbc467809e334f38fd4b2e22aa8.webp'" :alt="t('sponsor.wechatQrAlt')" loading="lazy" />
+                <img src="/images/sponsor/wechat-qr.webp" :alt="t('sponsor.wechatQrAlt')" width="180" height="180" decoding="async" fetchpriority="high" />
               </div>
             </div>
 
@@ -71,7 +71,7 @@ useSeo({
               <h3 class="method-name">{{ t('sponsor.alipay') }}</h3>
               <p class="method-desc">{{ t('sponsor.alipayDesc') }}</p>
               <div class="qr-placeholder">
-                <img :src="'https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/26_04_d2c89724432aca7063429257cb363d62.webp'" :alt="t('sponsor.alipayQrAlt')" loading="lazy" />
+                <img src="/images/sponsor/alipay-qr.webp" :alt="t('sponsor.alipayQrAlt')" width="180" height="180" decoding="async" fetchpriority="high" />
               </div>
             </div>
           </div>
