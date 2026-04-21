@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
+import { computed, ref, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import { useI18n } from './i18n'
@@ -9,13 +9,20 @@ const route = useRoute()
 const router = useRouter()
 const { locale, localeOptions, setLocale, t } = useI18n()
 
-const appReady = ref(false)
 const isFirstLoad = ref(true)
 
+const dismissLoading = () => {
+  const el = document.getElementById('loading-screen')
+  if (el && !el.classList.contains('loaded')) {
+    el.classList.add('loaded')
+    const remove = () => el.remove()
+    el.addEventListener('transitionend', remove, { once: true })
+    setTimeout(remove, 600)
+  }
+}
+
 router.isReady().then(() => {
-  nextTick(() => {
-    appReady.value = true
-  })
+  requestAnimationFrame(dismissLoading)
 })
 
 const onAfterEnter = () => {
@@ -184,23 +191,14 @@ const authorSocialLinks: AuthorSocialLink[] = [
     </header>
 
     <main class="site-main">
-      <div v-if="!appReady" class="app-splash">
-        <div class="brand-logo" aria-hidden="true">
-          <span class="dot dot-1"></span>
-          <span class="dot dot-2"></span>
-          <span class="dot dot-3"></span>
-          <span class="dot dot-4"></span>
-        </div>
-        <span class="brand-name">ACGTI</span>
-      </div>
-      <router-view v-else v-slot="{ Component }">
+      <router-view v-slot="{ Component }">
         <transition :name="routeTransitionName" mode="out-in" @after-enter="onAfterEnter">
           <component :is="Component" />
         </transition>
       </router-view>
     </main>
 
-    <footer v-if="showFooter && appReady" class="site-footer">
+    <footer v-if="showFooter" class="site-footer">
       <div class="footer-content">
         <div class="footer-section">
           <h3 class="footer-title">{{ t('app.footer.sections.test') }}</h3>
