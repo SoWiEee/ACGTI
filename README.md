@@ -4,12 +4,15 @@
   <strong>ACG Type Indicator — 一个以 MBTI 为基础的二次元角色原型测试站点</strong>
 </p>
 
+<h5 align="center">
+  <a href="https://acgti.tianxingleo.top/">🌐 acgti.tianxingleo.top — ACGTI官网</a>
+</h5>
+
 <p align="center">
   回答情境式问题 · 获得唯一命中的角色代码 · 解锁你的二次元人格原型
 </p>
 
 <p align="center">
-  <a href="https://acgti.tianxingleo.top/">✨ 立即体验</a> ·
   <a href="#️-架构与原理">📖 阅读文档</a> ·
   <a href="#-贡献">🤝 参与贡献</a>
 </p>
@@ -152,27 +155,10 @@ src/
 └── style.css            # 全局样式
 
 functions/                # Cloudflare Pages Functions（后端 API）
-├── api/
-│   ├── _shared.ts       # D1 绑定与公共类型
-│   ├── config.ts        # 运行时配置（Turnstile 等）
-│   ├── submit.ts        # 结果匿名上报（聚合自增 + 抽样明细）
-│   ├── feedback.ts      # 用户 MBTI 反馈（含预测 MBTI）
-│   ├── ping.ts          # 健康检查
-│   └── stats/           # 统计查询接口
-│       ├── overview.ts
-│       ├── archetypes.ts
-│       └── characters.ts
-
 migrations/               # Cloudflare D1 数据库迁移
-├── 0001_init.sql
-├── 0002_rate_limit.sql
-├── 0003_simplify_answers.sql
-├── 0004_stats_snapshot.sql
-├── 0005_restore_submission_answers.sql
-├── 0006_add_feedback_answers.sql
-├── 0007_aggregate_counts.sql
-└── 0008_feedback_add_predicted.sql
 ```
+
+后端 API 与迁移文件的详细说明见 [`docs/internal-ops.md`](docs/internal-ops.md)。
 
 </details>
 
@@ -236,70 +222,9 @@ npm run dev:pages
 
 构建产物输出到 `dist/`，配置为相对路径（`base: './'`）。后端 API 基于 Cloudflare Pages Functions，使用 D1 数据库存储匿名统计数据，部署在 Cloudflare Pages 上。
 
-### Turnstile 与环境变量
+### 后端与环境变量
 
-如果你要在反馈页启用真实的人机验证，需要分别配置前端站点密钥和后端 secret：
-
-- `VITE_TURNSTILE_SITE_KEY`：前端使用的 Turnstile site key，建议配置在 Cloudflare Pages 的环境变量中。
-- `TURNSTILE_SECRET`：后端验证用的 secret，建议使用 `wrangler pages secret put TURNSTILE_SECRET --project-name acgti` 写入。
-
-本地联调建议：
-
-- 前端本地变量写入 `.env.local`（已在 `.gitignore` 忽略）：`VITE_TURNSTILE_SITE_KEY=你的真实或测试 site key`
-- Pages Functions 本地变量写入 `.dev.vars`（已在 `.gitignore` 忽略）：`TURNSTILE_SECRET=你的真实或测试 secret`
-
-补充说明：结果页会优先读取构建期的 `VITE_TURNSTILE_SITE_KEY`，并在为空时回退到运行时 `/api/config`。运行时接口支持从 `VITE_TURNSTILE_SITE_KEY` 或 `TURNSTILE_SITE_KEY` 读取站点密钥。本地地址（localhost / 127.0.0.1 / 0.0.0.0）在未配置 Turnstile 时会自动回退到 Cloudflare 官方测试 key，方便你直接跑通完整链路。
-
-当前实现会在未配置这些值时自动降级，方便本地联调；但生产环境建议补齐后再公开反馈入口。
-
-### 预览与正式库
-
-上线前建议把预览环境和正式环境的 D1 数据库拆开，避免测试数据污染正式统计：
-
-- Preview 环境使用独立的 `acgti-stats-preview`
-- Production 环境使用独立的 `acgti-stats-prod`
-- 两边都先执行 `migrations/0001_init.sql`、`migrations/0002_rate_limit.sql`、`migrations/0003_simplify_answers.sql`、`migrations/0004_stats_snapshot.sql`、`migrations/0005_restore_submission_answers.sql`、`migrations/0006_add_feedback_answers.sql`、`migrations/0007_aggregate_counts.sql`、`migrations/0008_feedback_add_predicted.sql`
-
-如果需要按题查看提交明细，新版抽样数据优先查询 `submission_answers_blob` 表；旧版数据库可能仍保留 `submission_answers` 一题一行表：
-
-```sql
-SELECT submission_id, answers_json
-FROM submission_answers_blob
-ORDER BY submission_id DESC
-LIMIT 200;
-```
-
-聚合统计按维度拆分在 `archetype_counts`、`character_counts`、`pair_counts`、`daily_counts` 中：
-
-```sql
-SELECT * FROM character_counts ORDER BY cnt DESC LIMIT 50;
-SELECT * FROM archetype_counts ORDER BY cnt DESC LIMIT 50;
-```
-
-### Feedback 数据导出与分析
-
-仓库内提供了独立的 `analysis/` 流水线，用于下载 D1 反馈数据并生成本地报表：
-
-```powershell
-# 1. 安装 Python 分析依赖
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r analysis\requirements.txt
-
-# 2. 导出远程 D1 数据库
-.\analysis\export_feedback.ps1
-
-# 3. 将 SQL dump 落地为本地 SQLite，并导出 CSV
-python analysis\build_sqlite.py --sql analysis\backup\full_YYYY-MM-DD.sql --db analysis\acgti_feedback.db
-
-# 4. 生成一致率、错配、版本、角色争议度报表
-python analysis\analyze_feedback.py --db analysis\acgti_feedback.db
-
-# 5. 样本足够后，生成题目权重参考
-python analysis\train_dimension_models.py --db analysis\acgti_feedback.db
-```
-
-这条线优先使用 `mbti_feedback` 中用户主动提交的 `self_mbti + confidence + answers_json + predicted_mbti`，再按需回退到抽样提交表。普通匿名提交适合做全站分布统计；真正适合题目校准和权重微调的是高置信反馈样本。详细说明见 [`analysis/README.md`](analysis/README.md)。
+后端 API 基于 Cloudflare Pages Functions + D1 数据库。本地联调时 Turnstile 人机验证会自动降级为测试 key，无需额外配置即可跑通完整链路。生产环境如需启用反馈入口，可参考 [`docs/internal-ops.md`](docs/internal-ops.md) 配置 Turnstile 与 D1 数据库。
 
 ## 🤝 贡献
 
@@ -343,7 +268,6 @@ python analysis\train_dimension_models.py --db analysis\acgti_feedback.db
 
 - **GitHub Actions**：负责在 `main` push / PR 时校验构建是否通过
 - **Cloudflare Pages**：负责连接 GitHub 后的自动构建与部署，同时托管 Pages Functions 后端 API
-- **Cloudflare D1**：SQLite 边缘数据库，存储匿名统计数据
 - **GitHub Release**：在推送 `v*` tag 时自动构建 `dist/`、打包为 zip，并创建 Release
 
 发版方式示例：
