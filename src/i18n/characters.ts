@@ -795,7 +795,7 @@ const seriesI18n: Record<string, LocalizedText> = {
   },
   '别当哥哥了！': {
     'zh-CN': '别当哥哥了！',
-    'zh-TW': '別當哥哥了！',
+    'zh-TW': '不當哥哥了！',
     en: 'Onimai: I\'m Now Your Sister!',
     ja: 'お兄ちゃんはおしまい！',
   },
@@ -909,7 +909,7 @@ const seriesI18n: Record<string, LocalizedText> = {
   },
   '轻音少女': {
     'zh-CN': '轻音少女',
-    'zh-TW': '輕音少女',
+    'zh-TW': 'K-ON！輕音部',
     en: 'K-ON!',
     ja: 'けいおん!',
   },
@@ -975,7 +975,7 @@ const seriesI18n: Record<string, LocalizedText> = {
   },
   '少女乐队的呐喊 (GBC)': {
     'zh-CN': '少女乐队的呐喊 (GBC)',
-    'zh-TW': '少女樂隊的吶喊 (GBC)',
+    'zh-TW': '少女樂團吶喊吧 (GBC)',
     en: 'Girls Band Cry',
     ja: 'ガールズバンドクライ',
   },
@@ -1071,7 +1071,7 @@ const seriesI18n: Record<string, LocalizedText> = {
   },
   '时不时说一句俄语来掩饰害羞的邻座艾莉同学': {
     'zh-CN': '时不时说一句俄语来掩饰害羞的邻座艾莉同学',
-    'zh-TW': '不時說一句俄語來掩飾害羞的鄰座艾莉同學',
+    'zh-TW': '不時輕聲地以俄語遮羞的鄰座艾莉同學',
     en: 'Alya Sometimes Hides Her Feelings in Russian',
     ja: '時々ボソッとロシア語でデレる隣のアーリャさん',
   },
@@ -1083,13 +1083,13 @@ const seriesI18n: Record<string, LocalizedText> = {
   },
   '魔卡少女樱': {
     'zh-CN': '魔卡少女樱',
-    'zh-TW': '魔卡少女櫻',
+    'zh-TW': '庫洛魔法使',
     en: 'Cardcaptor Sakura',
     ja: 'カードキャプターさくら',
   },
   '更衣人偶坠入爱河': {
     'zh-CN': '更衣人偶坠入爱河',
-    'zh-TW': '更衣人偶墜入愛河',
+    'zh-TW': '戀上換裝娃娃',
     en: 'My Dress-Up Darling',
     ja: 'その着せ替え人形は恋をする',
   },
